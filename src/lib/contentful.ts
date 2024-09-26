@@ -4,7 +4,7 @@ import { EntryCollection, EntrySkeletonType } from "contentful";
 export const getContentfulTranslations = async ({
   locale,
   limit = 1000,
-  content_type = "translation",
+  content_type = "translations",
 }: {
   locale: string;
   limit?: number;
