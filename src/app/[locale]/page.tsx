@@ -20,6 +20,6 @@ export default function Home({ params: { locale } }: HomeProps) {
   unstable_setRequestLocale(locale);
 
   return (
-    <div className="w-full h-[100vh] h-[100dvh] bg-center bg-no-repeat bg-cover bg-banner-mobile md:bg-banner-tablet lg:bg-banner-desktop"></div>
+    <div className="w-full h-[100dvh] h-[100vh] bg-center bg-no-repeat bg-cover bg-banner-mobile md:bg-banner-tablet lg:bg-banner-desktop"></div>
   );
 }
