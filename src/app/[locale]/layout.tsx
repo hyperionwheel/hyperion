@@ -21,6 +21,7 @@ export async function generateMetadata({
 
   return {
     title: t("home_meta_title"),
+    description: t("home_meta_description"),
   };
 }
 
