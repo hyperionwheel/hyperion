@@ -6,7 +6,7 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { locales } from "@/config";
+import { locales } from "@/i18n/routing";
 
 type Props = {
   params: { locale: string };
