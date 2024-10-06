@@ -1,4 +1,4 @@
-import { NextTags } from "@/utils/constants";
+import { NextTags } from "@/lib/constants";
 import { toTranslationObject } from "@/utils/translations";
 import { AbstractIntlMessages } from "next-intl";
 
