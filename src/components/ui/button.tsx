@@ -10,9 +10,11 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-primary-main text-zinc-50 hover:bg-primary-light',
         secondary: 'bg-secondary-main text-zinc-50 hover:bg-secondary-light',
+        outlined: 'rounded-md border border-2 disabled:border-transparent',
       },
       size: {
         md: 'px-3 h-6 py-[14.5px] rounded-md',
+        icon: 'h-[56px] w-[56px]',
       },
     },
     defaultVariants: {

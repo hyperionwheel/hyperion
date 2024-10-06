@@ -1,12 +1,17 @@
-import createNextIntlPlugin from "next-intl/plugin";
+import createNextIntlPlugin from 'next-intl/plugin'
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["ucarecdn.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ucarecdn.com',
+      },
+    ],
   },
-};
+}
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig)
