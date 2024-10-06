@@ -15,7 +15,7 @@ export const TimelineDotIcon = ({ size, variant }: { size?: number; variant: Tim
         transform="rotate(-180 28.9998 29)"
         fill={variant === 'inactive' ? '#C2C2C2' : '#FF7BAC'}
       />
-      {variant === 'completed' && <path d="M21 27.24L27.7598 34L38.7598 23" stroke="#FAFAFA" stroke-width="3" />}
+      {variant === 'completed' && <path d="M21 27.24L27.7598 34L38.7598 23" stroke="#FAFAFA" strokeWidth="3" />}
     </svg>
   )
 }

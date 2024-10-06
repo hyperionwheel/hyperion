@@ -36,6 +36,7 @@ const config: Config = {
       white: '#FFF',
       black: '#000',
       disabled: '#C2C2C2',
+      error: '#FF7E7E',
       zinc: {
         ...colors.zinc,
       },
@@ -49,6 +50,9 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'hero-gradient': 'linear-gradient(0deg, #000000 0%, rgba(102, 102, 102, 0) 88.24%)',
+      },
+      borderColor: {
+        transparent: 'transparent',
       },
       spacing: {
         0.25: '2px',

@@ -2,10 +2,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { locales } from '@/i18n/routing'
-import { Footer } from '@/components/footer'
 import { cn } from '@/lib/utils'
 import Providers from '@/components/providers'
-import { Header } from '@/components/header'
+import { ExternalTemplate } from '@/components/external-template'
 
 type Props = {
   params: { locale: string }
@@ -54,11 +53,7 @@ export default async function RootLayout({
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <body className={cn('flex min-h-screen flex-col', sharpGrotesk.className)}>
         <Providers locale={locale} messages={messages}>
-          <Header />
-
-          <article>{children}</article>
-
-          <Footer />
+          <ExternalTemplate>{children}</ExternalTemplate>
         </Providers>
       </body>
     </html>
