@@ -1,4 +1,4 @@
-import { Logo } from '@/components/icons/logo'
+import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 
@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="flex flex-col justify-between md:flex-row">
           <div>
             <Link href="/" className="block w-8">
-              <Logo fill="#0D0D0D" />
+              <HyperionLogo fill="#0D0D0D" />
             </Link>
 
             <p className="w-full mt-4.5 md:max-w-[443px]">{t('about')}</p>
