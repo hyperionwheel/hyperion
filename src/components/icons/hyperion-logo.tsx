@@ -1,4 +1,4 @@
-export const Logo = ({
+export const HyperionLogo = ({
   fill = '#FFF',
   width = '64px',
   height = '64px',

@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 import { Link } from '@/i18n/routing'
 import { useWindowScroll } from '@/hooks/use-window-scroll'
 import { cn } from '@/lib/utils'
-import { Logo } from '@/components/icons/logo'
+import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { ToggleButton } from './toggle-button'
 import { HeaderMenu } from './header-menu'
 import { Aside } from './aside'
@@ -32,7 +32,7 @@ export const Header = () => {
         <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
           <div className={cn('flex flex-1', { hidden: isOpen })}>
             <Link href="/">
-              <Logo width={logoSize} height={logoSize} fill={isScrolled ? '#0D0D0D' : '#FFF'} />
+              <HyperionLogo width={logoSize} height={logoSize} fill={isScrolled ? '#0D0D0D' : '#FFF'} />
             </Link>
           </div>
           <div>
