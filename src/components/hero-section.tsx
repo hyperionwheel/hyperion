@@ -8,9 +8,9 @@ export const HeroSection = () => {
 
   return (
     <section>
-      <ParallaxBanner className="relative h-screen h-[100svh] text-white flex items-end bg-primary-main overflow-hidden mb-30">
+      <ParallaxBanner className="relative h-[100svh] text-white flex items-end bg-primary-main overflow-hidden mb-30">
         <ParallaxBannerLayer speed={-10}>
-          <video autoPlay loop muted preload="meta" className="absolute w-full h-full top-0 object-cover">
+          <video playsInline autoPlay loop muted preload="meta" className="absolute w-full h-full top-0 object-cover">
             <source src="/videos/hero.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
