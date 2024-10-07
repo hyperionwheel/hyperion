@@ -1,11 +1,11 @@
 export const HyperionLogo = ({
-  fill = '#FFF',
   width = '64px',
   height = '64px',
+  fill = 'currentColor',
 }: {
-  fill?: string
   width?: string
   height?: string
+  fill?: string
 }) => {
   return (
     <svg

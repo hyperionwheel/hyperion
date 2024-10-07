@@ -1,6 +1,10 @@
 import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
+import { FacebookIcon } from './icons/facebook'
+import { XIcon } from './icons/x'
+import { InstagramIcon } from './icons/instagram'
+import { LegalMenu } from './legal-menu'
 
 export const Footer = () => {
   const t = useTranslations('footer')
@@ -11,7 +15,7 @@ export const Footer = () => {
         <div className="flex flex-col justify-between md:flex-row">
           <div>
             <Link href="/" className="block w-8">
-              <HyperionLogo fill="#0D0D0D" />
+              <HyperionLogo />
             </Link>
 
             <p className="w-full mt-4.5 md:max-w-[443px]">{t('about')}</p>
@@ -40,17 +44,20 @@ export const Footer = () => {
             <div className="flex-1">
               <h4 className="font-medium text-base whitespace-nowrap">{t('follow_us_title')}</h4>
               <ul className="flex flex-col pt-2.5 gap-1.25">
-                <li>
+                <li className="flex gap-1.5">
+                  <FacebookIcon />
                   <Link href="" target="_blank">
                     Facebook
                   </Link>
                 </li>
-                <li>
+                <li className="flex gap-1.5">
+                  <XIcon />
                   <Link href="" target="_blank">
                     x.com
                   </Link>
                 </li>
-                <li>
+                <li className="flex gap-1.5">
+                  <InstagramIcon />
                   <Link href="https://instagram.com/hyperion_wheel" target="_blank">
                     Instagram
                   </Link>
@@ -60,19 +67,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="mt-4 md:mt-[55px]">
-          <ul className="flex flex-col gap-2.5 md:gap-7.5 sm:flex-row">
-            <li>{t('copyright')}</li>
-            <li>
-              <Link href="" target="_blank">
-                {t('privacy')}
-              </Link>
-            </li>
-            <li>
-              <Link href="" target="_blank">
-                {t('terms')}
-              </Link>
-            </li>
-          </ul>
+          <LegalMenu />
         </div>
       </div>
     </footer>

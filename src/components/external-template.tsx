@@ -1,10 +1,10 @@
 import { Footer } from './footer'
-import { Header } from './header'
+import { Headroom } from './headroom'
 
 export const ExternalTemplate = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Header />
+      <Headroom />
 
       <main>{children}</main>
 
