@@ -6,7 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from './ui/input'
 import { subscribeSchema } from '@/lib/schemas'
 import { Button } from './ui/button'
-import { SendIcon } from './icons/send'
+import { SendIcon } from '@/components/icons/send'
+import { Checkbox } from '@/components/ui/checkbox'
 
 export const SubscribeForm = ({ className }: { className?: string }) => {
   const {
@@ -22,7 +23,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
   return (
     <form className={className} onSubmit={handleSubmit(submitHandler)}>
       <div className="flex flex-col gap-2.5 md:flex-row">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2.5">
           <Input
             type="email"
             className="md:w-[400px]"
@@ -30,6 +31,15 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
             {...register('email', { required: true })}
             placeholder="Input your email here"
           />
+          <div className="flex items-center space-x-2">
+            <Checkbox id="email" />
+            <label
+              htmlFor="email"
+              className="text-sm text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Label
+            </label>
+          </div>
         </div>
         <Button
           type="submit"
