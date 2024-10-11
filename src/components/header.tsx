@@ -38,7 +38,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
         <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
           <Link className="logo focus-visible:outline-none " href="/">
             <span
-              className="block transition-all duration-500 eas animate-logo"
+              className="block ease-linear"
               style={{
                 transform: `rotate(${Math.floor(scrollRatio * 360 * 2)}deg)`,
               }}

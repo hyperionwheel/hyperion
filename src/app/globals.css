@@ -30,9 +30,6 @@
 
     .header .logo span {
         will-change: transform;
-        animation-play-state: paused;
-        animation-iteration-count: 1;
-        animation-fill-mode: both;
     }
 
     .header.is-scrolled .logo {

@@ -48,16 +48,6 @@ const config: Config = {
       md: '8px',
     },
     extend: {
-      animation: {
-        logo: 'logo 1s linear infinite',
-      },
-      keyframes: {
-        logo: {
-          to: {
-            transform: 'rotate(720deg)',
-          },
-        },
-      },
       backgroundImage: {
         'hero-gradient': 'linear-gradient(0deg, #000000 0%, rgba(102, 102, 102, 0) 88.24%)',
       },
