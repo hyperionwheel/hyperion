@@ -28,6 +28,13 @@
         @apply opacity-100
     }
 
+    .header .logo span {
+        animation-play-state: paused;
+        animation-delay: calc(var(--scroll) * -1s);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
     .header.is-scrolled .logo {
         @apply text-black
     }
@@ -61,3 +68,4 @@
         transform-origin: left;
     }
 }
+

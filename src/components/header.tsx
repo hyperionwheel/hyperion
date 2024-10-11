@@ -9,15 +9,12 @@ import { cn } from '@/lib/utils'
 import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { ToggleButton } from '@/components/toggle-button'
 import { HeaderMenu } from '@/components/header-menu'
-import useScrolling from '@/hooks/use-scrolling'
 
 export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: boolean; onAsideToggle: () => void }) => {
   const t = useTranslations('header')
 
   const scroll = useWindowScroll()
-  const isScrolling = useScrolling()
 
-  const logoRef = useRef<HTMLHeadingElement>(null)
   const headerRef = useRef<HTMLHeadingElement>(null)
 
   const isScrolled = scroll.y >= 116
@@ -31,17 +28,19 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
   }, [isScrolled, isAsideVisible])
 
   useEffect(() => {
-    if (logoRef.current) {
-      logoRef.current?.classList.toggle('animate-logo', isScrolling)
+    if (headerRef.current) {
+      const scrollHeight = document.body.scrollHeight - window.innerHeight
+
+      headerRef.current?.style.setProperty('--scroll', String(scroll.y / scrollHeight))
     }
-  }, [isScrolling])
+  }, [scroll.y])
 
   return (
     <header ref={headerRef} className={cn('header fixed top-0 left-0 w-full py-2 z-[999]')}>
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
         <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
           <Link className="logo focus-visible:outline-none " href="/">
-            <span className="block" ref={logoRef}>
+            <span className="block transition-all duration-500 animate-logo">
               <HyperionLogo width={logoSize} height={logoSize} />
             </span>
           </Link>
