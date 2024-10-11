@@ -49,12 +49,13 @@ const config: Config = {
     },
     extend: {
       animation: {
-        logo: 'logo 1s ease-in-out',
+        logo: 'logo 1s linear infinite',
       },
       keyframes: {
         logo: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
+          to: {
+            transform: 'rotate(720deg)',
+          },
         },
       },
       backgroundImage: {
