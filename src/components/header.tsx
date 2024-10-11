@@ -31,7 +31,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
   useEffect(() => {
     if (logoRef.current) {
       const scrollRatio = scrollY / (document.body.scrollHeight - window.innerHeight)
-      logoRef.current.style.transform = `rotate(${scrollRatio * 360 * 2}deg)`
+      logoRef.current.style.setProperty('--rotate', `${scrollRatio * 360 * 2}deg`)
     }
   }, [scroll.y])
 
@@ -40,7 +40,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
         <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
           <Link className="logo focus-visible:outline-none " href="/">
-            <span ref={logoRef} className="block transition-all duration-500 eas animate-logo">
+            <span ref={logoRef} className="block transition-all duration-500 eas animate-logo rotate-[--rotate]">
               <HyperionLogo width={logoSize} height={logoSize} />
             </span>
           </Link>
