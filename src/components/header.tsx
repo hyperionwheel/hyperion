@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useWindowScroll } from 'react-use'
 import { Button } from '@/components/ui/button'
@@ -14,12 +14,16 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
   const t = useTranslations('header')
 
   const scroll = useWindowScroll()
+  const [scrollRatio, setScrollRatio] = useState(0)
 
-  const logoRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLHeadingElement>(null)
 
   const isScrolled = scroll.y >= 116
   const logoSize = isAsideVisible ? 77 : 84
+
+  useEffect(() => {
+    setScrollRatio(scroll.y / (document.body.scrollHeight - window.innerHeight))
+  }, [scroll.y])
 
   useEffect(() => {
     if (headerRef.current) {
@@ -28,19 +32,17 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
     }
   }, [isScrolled, isAsideVisible])
 
-  useEffect(() => {
-    if (logoRef.current) {
-      const scrollRatio = scrollY / (document.body.scrollHeight - window.innerHeight)
-      logoRef.current.style.setProperty('--rotate', `${Math.floor(scrollRatio * 360 * 2)}deg`)
-    }
-  }, [scroll.y])
-
   return (
     <header ref={headerRef} className={cn('header fixed top-0 left-0 w-full py-2 z-[999]')}>
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
         <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
           <Link className="logo focus-visible:outline-none " href="/">
-            <span ref={logoRef} className="block transition-all duration-500 eas animate-logo rotate-[--rotate] ">
+            <span
+              className="block transition-all duration-500 eas animate-logo"
+              style={{
+                transform: `rotate(${Math.floor(scrollRatio * 360 * 2)}deg)`,
+              }}
+            >
               <HyperionLogo width={logoSize} height={logoSize} />
             </span>
           </Link>
