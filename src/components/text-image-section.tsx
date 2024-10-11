@@ -35,13 +35,13 @@ export const TextImageSection = ({
 
   return (
     <section className="2xl:container mx-auto">
-      <div className="relative py-2.5 px-1.25 md:py-6 md:px-5">
+      <div className="relative py-5 px-1.25 md:py-8 md:px-5">
         {!overlay && Title}
         <div className={cn('flex flex-col gap-2 lg:flex-row', overlay ? '' : 'lg:mt-3')}>
           <div className="flex-1">
             <div className={overlay ? 'xl:absolute' : 'xl:relative'}>
               {overlay && Title}
-              <p className="text-base mt-3 max-w-full md:text-xl lg:max-w-[555px]">{description}</p>
+              <p className="text-base mt-3 max-w-full lg:mt-0 md:text-xl lg:max-w-[555px]">{description}</p>
             </div>
           </div>
           <div className="mt-3 lg:mt-0 flex justify-end lg:max-w-[650px] xl:max-w-[787px]">

@@ -9,7 +9,7 @@ export const SignupBanner = () => {
 
   return (
     <section className="2xl:container mx-auto">
-      <div className="py-2.5 px-1.25 md:py-4 md:px-5">
+      <div className="py-5 px-1.25 md:py-8 md:px-5">
         <div style={{ backgroundImage: `url(${image})` }} className="py-6 px-4 bg-cover bg-right">
           <p className="font-medium text-[24px] text-white md:text-[60px]">{t('title')}</p>
           <SubscribeForm className="mt-[20px]" />

@@ -47,7 +47,7 @@ export const TimelineSection = () => {
 
   return (
     <section className="2xl:container mx-auto ">
-      <div className="relative py-2.5 px-1.25 md:py-6 md:px-5">
+      <div className="relative px-1.25 md:px-5">
         <h2
           className={cn(
             'font-medium',
@@ -60,7 +60,7 @@ export const TimelineSection = () => {
         </h2>
         <p className="text-base mt-3 max-w-full md:text-xl lg:max-w-[450px]">{t('timeline_description')}</p>
       </div>
-      <div className="relative mt-4.5 mb-5 md:py-10">
+      <div className="relative py-5 md:py-10">
         <Timeline>
           {timelines.map((item, index) => (
             <TimelineItem key={index}>

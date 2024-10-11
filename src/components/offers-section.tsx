@@ -7,7 +7,7 @@ export const OffersSection = () => {
 
   return (
     <section className="2xl:container mx-auto">
-      <div className="py-2.5 px-1.25 md:py-4 md:px-5">
+      <div className="px-1.25 md:px-5">
         <div className="grid grid-cols-1 gap-2.5 lg:gap-2 lg:grid-cols-2">
           <OfferCard
             title={t('seasonal_events_title')}
