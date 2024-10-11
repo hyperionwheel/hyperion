@@ -10,8 +10,8 @@ export const Footer = () => {
   const t = useTranslations('footer')
 
   return (
-    <footer className="w-full 2xl:container mx-auto text-sm">
-      <div className="d-flex py-[38px] px-1.25 md:px-5 md:py-4">
+    <footer className="w-full 2xl:container bg-white mx-auto text-sm">
+      <div className="d-flex py-[38px] px-1.25 md:px-5 md:py-[77px]">
         <div className="flex flex-col justify-between md:flex-row">
           <div>
             <Link href="/" className="block w-8">
