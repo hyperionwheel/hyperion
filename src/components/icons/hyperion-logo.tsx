@@ -1,10 +1,10 @@
 export const HyperionLogo = ({
-  width = '64px',
-  height = '64px',
+  width = 64,
+  height = 64,
   fill = 'currentColor',
 }: {
-  width?: string
-  height?: string
+  width?: number
+  height?: number
   fill?: string
 }) => {
   return (
