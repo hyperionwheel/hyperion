@@ -29,11 +29,12 @@
     }
 
     .header .logo span {
-        --tw-rotate: var(--rotate);
-        --webkit-transform: rotate(var(--tw-rotate));
         animation-play-state: paused;
         animation-iteration-count: 1;
         animation-fill-mode: both;
+        will-change: transform;
+        --tw-rotate: var(--rotate);
+        --webkit-transform: rotate(var(--tw-rotate));
     }
 
     .header.is-scrolled .logo {
