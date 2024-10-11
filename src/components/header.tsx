@@ -40,7 +40,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
             <span
               className="block ease-linear"
               style={{
-                transform: `rotate(${Math.floor(scrollRatio * 360 * 2)}deg)`,
+                transform: `rotate(${scrollRatio * 360 * 2}deg)`,
               }}
             >
               <HyperionLogo width={logoSize} height={logoSize} />
