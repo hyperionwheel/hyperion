@@ -1,15 +1,15 @@
-import { getUploadCareUrl } from "@/lib/uploadcare";
+import { getUploadCareUrl } from '@/lib/uploadcare'
 
 export const OfferCard = ({
   title,
   description,
   imageSrc,
 }: {
-  title: string;
-  description: string;
-  imageSrc: string;
+  title: string
+  description: string
+  imageSrc: string
 }) => {
-  const image = getUploadCareUrl({ src: imageSrc });
+  const image = getUploadCareUrl({ src: imageSrc })
 
   return (
     <div
@@ -17,9 +17,9 @@ export const OfferCard = ({
       className="relative bg-primary-main min-h-[300px] bg-cover bg-center before:content-[''] before:absolute before:h-full before:w-full before:opacity-30 before:bg-black lg:min-h-[436px]"
     >
       <div className="relative p-5 h-full flex flex-col justify-end">
-        <h3 className="text-3xl text-white">{title}</h3>
+        <h3 className="text-3xl text-white font-medium">{title}</h3>
         <p className="text-base mt-1 text-white">{description}</p>
       </div>
     </div>
-  );
-};
+  )
+}
