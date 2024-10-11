@@ -46,13 +46,13 @@ export const Footer = () => {
               <ul className="flex flex-col pt-2.5 gap-1.25">
                 <li className="flex gap-1.5">
                   <FacebookIcon />
-                  <Link href="" target="_blank">
+                  <Link href="https://www.facebook.com/hyperion.wheel" target="_blank">
                     Facebook
                   </Link>
                 </li>
                 <li className="flex gap-1.5">
                   <XIcon />
-                  <Link href="" target="_blank">
+                  <Link href="https://x.com/hyperion_wheel" target="_blank">
                     x.com
                   </Link>
                 </li>
