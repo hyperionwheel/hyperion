@@ -11,7 +11,7 @@ export const PartnershipSection = () => {
     <section className="2xl:container mx-auto">
       <div
         style={{ backgroundImage: `url(${image})` }}
-        className="min-h-[560px] bg-[length:850px] bg-[65%_bottom] bg-no-repeat bg-primary-main md:bg-bottom md:bg-contain"
+        className="min-h-[560px] bg-[length:800px] bg-[65%_bottom] bg-no-repeat bg-primary-main md:bg-bottom md:bg-contain"
       >
         <div className="py-2.5 px-1.25 md:py-6 md:px-4 gap-2.5">
           <h2 className="font-medium text-white text-[34px] mx-w-full leading-[43px] md:max-w-[600px] md:text-[66px] md:leading-[84px] ">
