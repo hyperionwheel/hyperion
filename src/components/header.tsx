@@ -15,10 +15,11 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
 
   const scroll = useWindowScroll()
 
+  const logoRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLHeadingElement>(null)
 
   const isScrolled = scroll.y >= 116
-  const logoSize = isAsideVisible ? '77px' : '84px'
+  const logoSize = isAsideVisible ? 77 : 84
 
   useEffect(() => {
     if (headerRef.current) {
@@ -28,10 +29,9 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
   }, [isScrolled, isAsideVisible])
 
   useEffect(() => {
-    if (headerRef.current) {
-      const scrollHeight = document.body.scrollHeight - window.innerHeight
-
-      headerRef.current?.style.setProperty('--scroll', String(scroll.y / scrollHeight))
+    if (logoRef.current) {
+      const scrollRatio = scrollY / (document.body.scrollHeight - window.innerHeight)
+      logoRef.current.style.transform = `rotate(${scrollRatio * 360 * 2}deg)`
     }
   }, [scroll.y])
 
@@ -40,7 +40,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
         <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
           <Link className="logo focus-visible:outline-none " href="/">
-            <span className="block transition-all duration-500 animate-logo">
+            <span ref={logoRef} className="block transition-all duration-500 eas animate-logo">
               <HyperionLogo width={logoSize} height={logoSize} />
             </span>
           </Link>
