@@ -8,14 +8,14 @@ export const HeaderMenu = ({ className, mobile = false }: { className?: string; 
   const t = useTranslations('header')
 
   return (
-    <nav className={cn('nav flex items-center text-base transition-colors duration-500 text-white', className)}>
+    <nav className={cn('nav flex items-center text-base transition-colors duration-500', className)}>
       <ul
         className={cn('flex gap-[60px] pr-7.5 items-center', {
           'flex-col items-[normal] text-[34px] leading-[40px] gap-1.25 items-start': mobile,
         })}
       >
         <li className="h-full">
-          <NavLink href="">{t('nav_home')}</NavLink>
+          <NavLink href="/">{t('nav_home')}</NavLink>
         </li>
         <li>
           <NavLink href="">{t('nav_about')}</NavLink>

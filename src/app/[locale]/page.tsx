@@ -1,3 +1,4 @@
+import { ExternalTemplate } from '@/components/external-template'
 import { HeroSection } from '@/components/hero-section'
 import { OffersSection } from '@/components/offers-section'
 import { ParallaxSection } from '@/components/parallax-section'
@@ -28,7 +29,7 @@ export default function Home({ params: { locale } }: HomeProps) {
   const t = useTranslations('home')
 
   return (
-    <>
+    <ExternalTemplate variant="hero">
       <HeroSection />
       <TextImageSection
         title={t('discover_cyprus_views_title')}
@@ -52,6 +53,6 @@ export default function Home({ params: { locale } }: HomeProps) {
       <OffersSection />
       <SignupBanner />
       <ParallaxSection imageSrc={images.hero2} />
-    </>
+    </ExternalTemplate>
   )
 }

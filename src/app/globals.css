@@ -23,6 +23,15 @@
         @apply bg-white absolute right-0 top-0 left-0 bottom-0 opacity-0
     }
 
+    .header.header-hero {
+        @apply text-white
+    }
+
+    .header:not(.header-hero)::before {
+        transform: translateY(0);
+        @apply opacity-100
+    }
+
     .header.is-scrolled::before {
         transform: translateY(0);
         @apply opacity-100
@@ -36,6 +45,10 @@
         @apply text-black
     }
 
+    .header:not(.header-hero):not(.header.is-menu) .toggle>div {
+        @apply bg-black
+    }
+    
     .header.is-scrolled:not(.header.is-menu) .toggle>div {
         @apply bg-black
     }
@@ -65,4 +78,3 @@
         transform-origin: left;
     }
 }
-

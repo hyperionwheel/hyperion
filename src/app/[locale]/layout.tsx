@@ -4,7 +4,6 @@ import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-in
 import { locales } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import Providers from '@/components/providers'
-import { ExternalTemplate } from '@/components/external-template'
 
 type Props = {
   params: { locale: string }
@@ -53,7 +52,7 @@ export default async function RootLayout({
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <body className={cn('flex min-h-screen flex-col bg-[#FAFAFA]', sharpGrotesk.className)}>
         <Providers locale={locale} messages={messages}>
-          <ExternalTemplate>{children}</ExternalTemplate>
+          {children}
         </Providers>
       </body>
     </html>

@@ -1,20 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-export const ToggleButton = ({
-  isOpen,
-  toggleMenu,
-  className,
-}: {
-  isOpen: boolean
-  toggleMenu: () => void
-  className?: string
-}) => (
+export const ToggleButton = ({ isOpen, toggleMenu }: { isOpen: boolean; toggleMenu: () => void }) => (
   <button
     type="button"
     onClick={toggleMenu}
-    className={cn('toggle group w-[52px] h-[52px] relative z-[30] focus:outline-none md:hidden', className)}
+    className="toggle group w-[52px] h-[52px] relative z-[30] focus:outline-none md:hidden"
   >
     <div
       className="w-[52px] h-0.25 bg-white rounded absolute transition-transform duration-300 ease-in-out"

@@ -10,7 +10,13 @@ import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { ToggleButton } from '@/components/toggle-button'
 import { HeaderMenu } from '@/components/header-menu'
 
-export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: boolean; onAsideToggle: () => void }) => {
+type HeaderProps = {
+  variant: 'default' | 'hero'
+  isAsideVisible: boolean
+  onAsideToggle: () => void
+}
+
+export const Header = ({ variant, isAsideVisible, onAsideToggle }: HeaderProps) => {
   const t = useTranslations('header')
 
   const scroll = useWindowScroll()
@@ -33,10 +39,16 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
   }, [isScrolled, isAsideVisible])
 
   return (
-    <header ref={headerRef} className={cn('header fixed top-0 left-0 w-full py-2 z-[999]')}>
+    <header
+      ref={headerRef}
+      className={cn('header relative top-0 left-0 w-full py-2 z-[999] text-black', {
+        'header-hero': variant === 'hero',
+        fixed: isScrolled || variant === 'hero',
+      })}
+    >
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
-        <div className={cn('flex flex-1 text-white', { hidden: isAsideVisible })}>
-          <Link className="logo focus-visible:outline-none " href="/">
+        <div className={cn('flex flex-1 ', { hidden: isAsideVisible })}>
+          <Link href="/" className="logo focus-visible:outline-none ">
             <span
               className="block"
               style={{
@@ -48,7 +60,7 @@ export const Header = ({ isAsideVisible, onAsideToggle }: { isAsideVisible: bool
           </Link>
         </div>
         <div>
-          <HeaderMenu className="hidden md:block" />
+          <HeaderMenu className={cn('hidden md:block')} />
         </div>
         <div>
           <Button className="hidden md:block">{t('cta')}</Button>
