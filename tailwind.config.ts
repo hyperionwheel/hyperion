@@ -12,7 +12,8 @@ const config: Config = {
       sm: '14px',
       base: '16px',
       xl: '20px',
-      '3xl': '30px',
+      '3xl': '34px',
+      '7xl': '86px',
     },
     screens: {
       sm: '640px',
