@@ -49,6 +49,16 @@ const config: Config = {
       md: '8px',
     },
     extend: {
+      animation: {
+        logo: 'logo 1s ease-in-out',
+      },
+      keyframes: {
+        logo: {
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
+      },
       backgroundImage: {
         'hero-gradient': 'linear-gradient(0deg, #000000 0%, rgba(102, 102, 102, 0) 88.24%)',
       },

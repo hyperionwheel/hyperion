@@ -31,13 +31,13 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="" target="_blank">
-                      {t('testimony')}
+                    <Link href="/partnership" target="_blank">
+                      {t('partnership')}
                     </Link>
                   </li>
                   <li>
                     <Link href="" target="_blank">
-                      {t('rating')}
+                      {t('FAQ')}
                     </Link>
                   </li>
                 </ul>

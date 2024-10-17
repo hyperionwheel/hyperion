@@ -1,14 +1,15 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import { useWindowScroll } from 'react-use'
+import { useWindowScroll, useWindowSize } from 'react-use'
 import { Button } from '@/components/ui/button'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { ToggleButton } from '@/components/toggle-button'
 import { HeaderMenu } from '@/components/header-menu'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type HeaderProps = {
   variant: 'default' | 'hero'
@@ -19,17 +20,16 @@ type HeaderProps = {
 export const Header = ({ variant, isAsideVisible, onAsideToggle }: HeaderProps) => {
   const t = useTranslations('header')
 
-  const scroll = useWindowScroll()
-  const [scrollRatio, setScrollRatio] = useState(0)
-
   const headerRef = useRef<HTMLHeadingElement>(null)
 
-  const isScrolled = scroll.y >= 116
-  const logoSize = isAsideVisible ? 77 : 84
+  const size = useWindowSize()
+  const pathname = usePathname()
+  const isMobile = useIsMobile()
+  const scroll = useWindowScroll()
 
-  useEffect(() => {
-    setScrollRatio(scroll.y / (document.body.scrollHeight - window.innerHeight))
-  }, [scroll.y])
+  const logoSize = isMobile ? 77 : 84
+  const headerHeight = headerRef.current?.offsetHeight ?? 0
+  const isScrolled = scroll.y > headerHeight
 
   useEffect(() => {
     if (headerRef.current) {
@@ -41,19 +41,17 @@ export const Header = ({ variant, isAsideVisible, onAsideToggle }: HeaderProps) 
   return (
     <header
       ref={headerRef}
-      className={cn('header relative top-0 left-0 w-full py-2 z-[999] text-black', {
+      className={cn('header fixed top-0 left-0 w-full py-2 z-[999] text-black', {
         'header-hero': variant === 'hero',
-        fixed: isScrolled || variant === 'hero',
       })}
     >
       <div className="2xl:container mx-auto relative px-1.25 z-[1] flex items-normal justify-between md:px-5 md:items-center">
         <div className={cn('flex flex-1 ', { hidden: isAsideVisible })}>
           <Link href="/" className="logo focus-visible:outline-none ">
             <span
-              className="block"
-              style={{
-                transform: `rotate(${scrollRatio * 360 * 2}deg)`,
-              }}
+              className={cn('block', {
+                'animate-logo': pathname === '/' && scroll.y > size.height - headerHeight,
+              })}
             >
               <HyperionLogo width={logoSize} height={logoSize} />
             </span>

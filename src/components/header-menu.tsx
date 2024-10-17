@@ -18,13 +18,13 @@ export const HeaderMenu = ({ className, mobile = false }: { className?: string; 
           <NavLink href="/">{t('nav_home')}</NavLink>
         </li>
         <li>
-          <NavLink href="">{t('nav_about')}</NavLink>
+          <NavLink href="/about">{t('nav_about')}</NavLink>
         </li>
         <li>
-          <NavLink href="">{t('nav_partnership')}</NavLink>
+          <NavLink href="/partnership">{t('nav_partnership')}</NavLink>
         </li>
         <li>
-          <NavLink href="">{t('nav_FAQ')}</NavLink>
+          <NavLink href="/faq">{t('nav_FAQ')}</NavLink>
         </li>
       </ul>
     </nav>
