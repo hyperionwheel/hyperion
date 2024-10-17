@@ -50,7 +50,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
-      <body className={cn('flex min-h-screen flex-col bg-[#FAFAFA]', sharpGrotesk.className)}>
+      <body className={cn('min-h-screen bg-[#FAFAFA]', sharpGrotesk.className)}>
         <Providers locale={locale} messages={messages}>
           {children}
         </Providers>
