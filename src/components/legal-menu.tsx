@@ -8,14 +8,10 @@ export const LegalMenu = () => {
     <ul className="flex flex-col gap-2.5 md:gap-7.5 sm:flex-row">
       <li>{t('copyright')}</li>
       <li>
-        <Link href="/privacy" target="_blank">
-          {t('privacy')}
-        </Link>
+        <Link href="/privacy">{t('privacy')}</Link>
       </li>
       <li>
-        <Link href="/terms" target="_blank">
-          {t('terms')}
-        </Link>
+        <Link href="/terms">{t('terms')}</Link>
       </li>
     </ul>
   )
