@@ -7,9 +7,10 @@ import { Header } from './header'
 type HeadroomProps = {
   variant: 'transparent' | 'white'
   mobileCTA?: boolean
+  animation?: boolean
 }
 
-export const Headroom = ({ variant, mobileCTA }: HeadroomProps) => {
+export const Headroom = ({ variant, mobileCTA, animation }: HeadroomProps) => {
   const [isAsideVisible, setAsideVisible] = useState<boolean>(false)
 
   const toggleAsideVisibility = () => setAsideVisible((prev) => !prev)
@@ -18,6 +19,7 @@ export const Headroom = ({ variant, mobileCTA }: HeadroomProps) => {
     <>
       <Header
         variant={variant}
+        animation={animation}
         mobileCTA={mobileCTA}
         isAsideVisible={isAsideVisible}
         onAsideToggle={toggleAsideVisibility}
