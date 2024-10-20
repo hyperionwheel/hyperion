@@ -8,16 +8,18 @@ export const ExternalTemplate = ({
   headerVariant = 'white',
   offsetHeader = false,
   mobileCTA = false,
+  animation = false,
 }: {
   children: React.ReactNode
   headerVariant?: 'transparent' | 'white'
   container?: boolean
   offsetHeader?: boolean
   mobileCTA?: boolean
+  animation?: boolean
 }) => {
   return (
     <div className={cn('flex flex-col min-h-screen', { 'pt-[116px]': offsetHeader })}>
-      <Headroom variant={headerVariant} mobileCTA={mobileCTA} />
+      <Headroom variant={headerVariant} mobileCTA={mobileCTA} animation={animation} />
 
       <main className="flex-1">
         <div

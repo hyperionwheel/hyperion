@@ -7,6 +7,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: ['overflow-hidden'],
   theme: {
     fontSize: {
       sm: '14px',
@@ -52,8 +53,13 @@ const config: Config = {
     extend: {
       animation: {
         logo: 'logo 1s cubic-bezier(.86, 0, .07, 1)',
+        'fade-up': 'fade-up 0.8s ease-out',
       },
       keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         logo: {
           to: {
             transform: 'rotate(360deg)',

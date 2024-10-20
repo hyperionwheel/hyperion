@@ -1,3 +1,4 @@
+import { AnimatedLogoSection } from '@/components/animated-logo-section'
 import { ExternalTemplate } from '@/components/external-template'
 import { HeroSection } from '@/components/hero-section'
 import { OffersSection } from '@/components/offers-section'
@@ -29,8 +30,9 @@ export default function Home({ params: { locale } }: HomeProps) {
   const t = useTranslations('home')
 
   return (
-    <ExternalTemplate headerVariant="transparent">
-      <HeroSection format="video" source="/videos/hero.mp4" title={t('hero_title')} />
+    <ExternalTemplate headerVariant="transparent" animation>
+      <HeroSection format="video" source="/videos/hero.mp4" title={t('hero_title')} animation />
+      <AnimatedLogoSection />
       <TextImageSection
         title={t('discover_cyprus_views_title')}
         description={t('discover_cyprus_views_description')}

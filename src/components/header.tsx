@@ -11,19 +11,27 @@ import { ToggleButton } from '@/components/toggle-button'
 import { HeaderMenu } from '@/components/header-menu'
 import dynamic from 'next/dynamic'
 import { useLenis } from 'lenis/react'
+import { useHomeAnimationStore } from '@/hooks/useHomeAnimationStore'
 
 type HeaderProps = {
   variant: 'transparent' | 'white'
   isAsideVisible: boolean
   onAsideToggle: () => void
   mobileCTA?: boolean
+  animation?: boolean
 }
 
 const ClaimRewardDialog = dynamic(() => import('./claim-reward-dialog').then((mod) => mod.ClaimRewardDialog), {
   ssr: false,
 })
 
-export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideToggle }: HeaderProps) => {
+export const Header = ({
+  variant,
+  isAsideVisible,
+  mobileCTA = false,
+  animation = false,
+  onAsideToggle,
+}: HeaderProps) => {
   const t = useTranslations('header')
 
   const headerRef = useRef<HTMLHeadingElement>(null)
@@ -35,6 +43,8 @@ export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideTogg
   const pathname = usePathname()
   const scroll = useWindowScroll()
 
+  const isLogoAnimated = useHomeAnimationStore((state) => state.isLogoAnimated)
+
   const headerHeight = headerRef.current?.offsetHeight ?? 0
   const isScrolled = scroll.y > headerHeight
 
@@ -45,6 +55,11 @@ export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideTogg
     }
   }, [isScrolled, isAsideVisible])
 
+  const animationClasses = cn({
+    'opacity-0': animation,
+    'opacity-1': isLogoAnimated && animation,
+  })
+
   return (
     <header
       ref={headerRef}
@@ -53,7 +68,7 @@ export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideTogg
       className="header fixed top-0 left-0 w-full py-2 z-[99]"
     >
       <div className="2xl:container mx-auto relative px-1.25 flex items-normal justify-between z-[1] md:px-5 md:items-center">
-        <div className="logo flex flex-1">
+        <div className={cn('logo flex flex-1', animationClasses)}>
           <Link href="/" className="logo focus-visible:outline-none">
             <span
               className={cn('block', {
@@ -64,7 +79,7 @@ export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideTogg
             </span>
           </Link>
         </div>
-        <div className="flex items-center">
+        <div className={cn('flex items-center', animationClasses)}>
           <HeaderMenu className="hidden md:block" />
           <Button
             className={cn('cta', {
@@ -78,7 +93,9 @@ export const Header = ({ variant, isAsideVisible, mobileCTA = false, onAsideTogg
             {t('cta')}
           </Button>
         </div>
-        <ToggleButton isOpen={isAsideVisible} toggleMenu={onAsideToggle} />
+        <div className={cn(animationClasses)}>
+          <ToggleButton isOpen={isAsideVisible} toggleMenu={onAsideToggle} />
+        </div>
       </div>
 
       <ClaimRewardDialog
