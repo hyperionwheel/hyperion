@@ -9,7 +9,10 @@ type TypographyPropsVariant =
   | 'Sharp Grotesk Body 1'
   | 'Sharp Grotesk Caption Bold'
 
-const defaultVariantMapping: Record<TypographyPropsVariant, keyof JSX.IntrinsicElements> = {
+const defaultVariantMapping: Record<
+  TypographyPropsVariant,
+  keyof Pick<JSX.IntrinsicElements, 'h1' | 'h2' | 'h3' | 'p'>
+> = {
   'Sharp Grotesk H1': 'h1',
   'Sharp Grotesk H2': 'h2',
   'Sharp Grotesk H3': 'h3',
