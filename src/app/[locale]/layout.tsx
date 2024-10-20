@@ -4,6 +4,7 @@ import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-in
 import { locales } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import Providers from '@/components/providers'
+import { ReactLenis } from '@/lib/lines'
 
 type Props = {
   params: { locale: string }
@@ -49,12 +50,14 @@ export default async function RootLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-[#FAFAFA]', sharpGrotesk.className)}>
-        <Providers locale={locale} messages={messages}>
-          {children}
-        </Providers>
-      </body>
+    <html lang={locale} suppressHydrationWarning>
+      <ReactLenis root>
+        <body className={cn('min-h-screen bg-[#FAFAFA]', sharpGrotesk.className)}>
+          <Providers locale={locale} messages={messages}>
+            {children}
+          </Providers>
+        </body>
+      </ReactLenis>
     </html>
   )
 }

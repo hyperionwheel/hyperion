@@ -1,34 +1,17 @@
-import { useTranslations } from 'next-intl'
-import { OfferCard } from '@/components/offer-card'
-import { images } from '@/lib/constants'
+import { OfferCard } from './offer-card'
 
-export const OffersSection = () => {
-  const t = useTranslations('home')
+type OffersSectionProps = {
+  offers: { title: string; description: string; imageSrc: string }[]
+}
 
+export const OffersSection = ({ offers }: OffersSectionProps) => {
   return (
     <section className="2xl:container mx-auto">
       <div className="px-1.25 md:px-5">
         <div className="grid grid-cols-1 gap-2.5 lg:gap-2 lg:grid-cols-2">
-          <OfferCard
-            title={t('seasonal_events_title')}
-            description={t('seasonal_events_description')}
-            imageSrc={images.seasonalEvents}
-          />
-          <OfferCard
-            title={t('advanced_technology_title')}
-            description={t('advanced_technology_description')}
-            imageSrc={images.advancedTechnology}
-          />
-          <OfferCard
-            title={t('family_fun_title')}
-            description={t('family_fun_description')}
-            imageSrc={images.familyFun}
-          />
-          <OfferCard
-            title={t('cyprus_experience_title')}
-            description={t('cyprus_experience_description')}
-            imageSrc={images.cyprusExperience}
-          />
+          {offers.map((offer, index) => (
+            <OfferCard key={index} title={offer.title} description={offer.description} imageSrc={offer.imageSrc} />
+          ))}
         </div>
       </div>
     </section>

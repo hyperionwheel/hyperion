@@ -26,9 +26,6 @@ export const Footer = () => {
                 <h4 className="font-medium text-base whitespace-nowrap">{t('about_title')}</h4>
                 <ul className="flex flex-col pt-2.5 gap-1.25">
                   <li>
-                    <Link href="/partnership">{t('contact')}</Link>
-                  </li>
-                  <li>
                     <Link href="/partnership">{t('partnership')}</Link>
                   </li>
                   <li>

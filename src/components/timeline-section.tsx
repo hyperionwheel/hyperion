@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
 import {
@@ -10,9 +12,28 @@ import {
   TimelineSeparator,
 } from './ui/timeline'
 import { TimelineDotIcon, TimelineDotVariant } from './icons/timeline-dot'
+import { useIntersection } from 'react-use'
+import { useEffect, useRef, useState } from 'react'
 
 export const TimelineSection = () => {
   const t = useTranslations('home')
+
+  const [isVisible, setIsVisible] = useState(false)
+
+  const intersectionRef = useRef<HTMLDivElement>(null)
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  })
+
+  useEffect(() => {
+    if (intersection && intersection.isIntersecting) {
+      setIsVisible(true)
+    }
+  }, [intersection])
+
+  console.log(intersection)
 
   const timelines = [
     {
@@ -46,7 +67,7 @@ export const TimelineSection = () => {
   ]
 
   return (
-    <section className="2xl:container mx-auto ">
+    <section className="animate-wiggle 2xl:container mx-auto ">
       <div className="relative px-1.25 md:px-5">
         <h2
           className={cn(
@@ -61,10 +82,15 @@ export const TimelineSection = () => {
         <p className="text-base mt-3 max-w-full md:text-xl lg:max-w-[450px]">{t('timeline_description')}</p>
       </div>
       <div className="relative py-5 md:py-10">
-        <Timeline>
+        <Timeline ref={intersectionRef}>
           {timelines.map((item, index) => (
             <TimelineItem key={index}>
-              <TimelineOppositeContent>
+              <TimelineOppositeContent
+                className={cn(`transition-all duration-700 ease-in-out opacity-0 translate-y-2`, {
+                  'opacity-100 translate-y-0': isVisible,
+                })}
+                style={{ transitionDelay: `${index * 700}ms` }}
+              >
                 <p className="text-sm">{item.oppositeContent}</p>
                 {item.oppositeContent && (
                   <div className="flex flex-1 flex-col items-center rotate-[0deg]">
@@ -80,7 +106,12 @@ export const TimelineSection = () => {
                 </TimelineDot>
                 <TimelineConnector active={item.connectors[1]} />
               </TimelineSeparator>
-              <TimelineContent>
+              <TimelineContent
+                className={cn(`transition-all duration-700 ease-in-out opacity-0 -translate-y-2`, {
+                  'opacity-100 translate-y-0': isVisible,
+                })}
+                style={{ transitionDelay: `${index * 700}ms` }}
+              >
                 <p className="text-sm">{item.content}</p>
                 {item.content && (
                   <div className="flex flex-1 flex-col items-center rotate-[180deg]">

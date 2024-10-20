@@ -1,24 +1,19 @@
 import { cn } from '@/lib/utils'
+import { Typography } from './ui/typography'
 
 export const Title = ({ sub = false, children }: { sub?: boolean; children: React.ReactNode }) => {
-  const Component = sub ? 'h2' : 'h1'
-
   return (
-    <Component className="text-3xl leading-[44px] font-medium mb-3 md:text-7xl md:leading-[110px]">
+    <Typography variant={sub ? 'Sharp Grotesk H2' : 'Sharp Grotesk H1'} className="mb-3">
       {children}
-    </Component>
+    </Typography>
   )
 }
 
 export const Text = ({ medium = false, children }: { medium?: boolean; children: React.ReactNode }) => {
   return (
-    <p
-      className={cn('text-base leading-[26px] max-w-[900px] md:text-xl md:leading-[32px]', {
-        'font-medium': medium,
-      })}
-    >
+    <Typography variant={medium ? 'Sharp Grotesk Caption Bold' : 'Sharp Grotesk Body 1'} className="max-w-[900px]">
       {children}
-    </p>
+    </Typography>
   )
 }
 
@@ -43,6 +38,4 @@ export const List = ({
   )
 }
 
-export const Point = ({ children }: { children: React.ReactNode }) => {
-  return <div className="mt-3.75">{children}</div>
-}
+export const Point = ({ children }: { children: React.ReactNode }) => <div className="mt-3.75">{children}</div>
