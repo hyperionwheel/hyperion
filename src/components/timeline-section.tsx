@@ -86,8 +86,8 @@ export const TimelineSection = () => {
           {timelines.map((item, index) => (
             <TimelineItem key={index}>
               <TimelineOppositeContent
-                className={cn(`transition-all duration-700 ease-in-out opacity-0 translate-y-2`, {
-                  'opacity-100 translate-y-0': isVisible,
+                className={cn(`transition-all duration-700 opacity-0`, {
+                  'opacity-100 fade-up': isVisible,
                 })}
                 style={{ transitionDelay: `${index * 500}ms` }}
               >
@@ -107,8 +107,8 @@ export const TimelineSection = () => {
                 <TimelineConnector active={item.connectors[1]} />
               </TimelineSeparator>
               <TimelineContent
-                className={cn(`transition-all duration-700 ease-in-out opacity-0 -translate-y-2`, {
-                  'opacity-100 translate-y-0': isVisible,
+                className={cn(`transition-all duration-700 opacity-0`, {
+                  'opacity-1 fade-up': isVisible,
                 })}
                 style={{ transitionDelay: `${index * 500}ms` }}
               >
