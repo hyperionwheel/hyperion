@@ -13,4 +13,12 @@ export const images = {
   unforgettableViews: 'https://ucarecdn.com/80668277-ba6f-4bb4-8694-5ff52ef96f50/',
   partnership: 'https://ucarecdn.com/bf6f0f93-f052-4bde-94d1-d16b8bf0956e/',
   promoBackground: 'https://ucarecdn.com/bde0ff23-7396-44b7-b278-3ef58b3f2817/',
+  aboutHero: 'https://ucarecdn.com/2be9c439-546f-4f47-8720-85f48b27a0d4/',
+  beyondTheWheel: 'https://ucarecdn.com/9d5e60ad-cf53-496a-9d56-a4a2593f36a6/',
+  groundFloor: 'https://ucarecdn.com/6a76fec0-926b-48b5-9605-66c18df37e81/',
+  firstFloor: 'https://ucarecdn.com/b92e151d-e331-41d4-923c-579efd951cfc/',
+  rooftop: 'https://ucarecdn.com/9697d820-0aaf-4de0-9732-1552f51be811/',
+  innovativeEngineering1: 'https://ucarecdn.com/d8f2f074-e023-40a0-a55c-0d047d86a229/',
+  innovativeEngineering2: 'https://ucarecdn.com/53f39762-01ef-4d6e-b0cb-2b701247854f/',
+  innovativeEngineering3: 'https://ucarecdn.com/9a0898a9-e9e6-484d-a9d8-099973908aea/',
 }

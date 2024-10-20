@@ -5,15 +5,19 @@ import { Headroom } from './headroom'
 export const ExternalTemplate = ({
   children,
   container = false,
-  variant = 'default',
+  headerVariant = 'white',
+  offsetHeader = false,
+  mobileCTA = false,
 }: {
   children: React.ReactNode
-  variant?: 'default' | 'hero'
+  headerVariant?: 'transparent' | 'white'
   container?: boolean
+  offsetHeader?: boolean
+  mobileCTA?: boolean
 }) => {
   return (
-    <div className={cn('flex flex-col min-h-screen', { 'pt-[116px]': variant === 'default' })}>
-      <Headroom variant={variant} />
+    <div className={cn('flex flex-col min-h-screen', { 'pt-[116px]': offsetHeader })}>
+      <Headroom variant={headerVariant} mobileCTA={mobileCTA} />
 
       <main className="flex-1">
         <div

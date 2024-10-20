@@ -5,17 +5,23 @@ import { Aside } from './aside'
 import { Header } from './header'
 
 type HeadroomProps = {
-  variant: 'default' | 'hero'
+  variant: 'transparent' | 'white'
+  mobileCTA?: boolean
 }
 
-export const Headroom = ({ variant }: HeadroomProps) => {
+export const Headroom = ({ variant, mobileCTA }: HeadroomProps) => {
   const [isAsideVisible, setAsideVisible] = useState<boolean>(false)
 
   const toggleAsideVisibility = () => setAsideVisible((prev) => !prev)
 
   return (
     <>
-      <Header variant={variant} isAsideVisible={isAsideVisible} onAsideToggle={toggleAsideVisibility} />
+      <Header
+        variant={variant}
+        mobileCTA={mobileCTA}
+        isAsideVisible={isAsideVisible}
+        onAsideToggle={toggleAsideVisibility}
+      />
       <Aside open={isAsideVisible} />
     </>
   )

@@ -29,8 +29,8 @@ export default function Home({ params: { locale } }: HomeProps) {
   const t = useTranslations('home')
 
   return (
-    <ExternalTemplate variant="hero">
-      <HeroSection />
+    <ExternalTemplate headerVariant="transparent">
+      <HeroSection format="video" source="/videos/hero.mp4" title={t('hero_title')} />
       <TextImageSection
         title={t('discover_cyprus_views_title')}
         description={t('discover_cyprus_views_description')}
@@ -50,7 +50,30 @@ export default function Home({ params: { locale } }: HomeProps) {
         description={t('interactive_cabins_description')}
         imageSrc={images.interactiveCabins}
       />
-      <OffersSection />
+      <OffersSection
+        offers={[
+          {
+            title: t('seasonal_events_title'),
+            description: t('seasonal_events_description'),
+            imageSrc: images.seasonalEvents,
+          },
+          {
+            title: t('advanced_technology_title'),
+            description: t('advanced_technology_description'),
+            imageSrc: images.advancedTechnology,
+          },
+          {
+            title: t('family_fun_title'),
+            description: t('family_fun_description'),
+            imageSrc: images.familyFun,
+          },
+          {
+            title: t('cyprus_experience_title'),
+            description: t('cyprus_experience_description'),
+            imageSrc: images.cyprusExperience,
+          },
+        ]}
+      />
       <SignupBanner />
       <ParallaxSection imageSrc={images.hero2} />
     </ExternalTemplate>

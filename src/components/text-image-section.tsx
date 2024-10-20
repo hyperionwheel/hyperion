@@ -9,7 +9,7 @@ export const TextImageSection = ({
   overlay = true,
 }: {
   title: string
-  description: string
+  description?: string
   imageSrc: string
   overlay?: boolean
 }) => {
@@ -41,7 +41,9 @@ export const TextImageSection = ({
           <div className="flex-1">
             <div className={overlay ? 'xl:absolute' : 'xl:relative'}>
               {overlay && Title}
-              <p className="text-base mt-3 max-w-full lg:mt-0 md:text-xl lg:max-w-[555px]">{description}</p>
+              {description && (
+                <p className="text-base mt-3 max-w-full lg:mt-0 md:text-xl lg:max-w-[555px]">{description}</p>
+              )}
             </div>
           </div>
           <div className="mt-3 lg:mt-0 flex justify-end lg:max-w-[650px] xl:max-w-[787px]">

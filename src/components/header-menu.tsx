@@ -10,7 +10,7 @@ export const HeaderMenu = ({ className, mobile = false }: { className?: string; 
   return (
     <nav className={cn('nav flex items-center text-base transition-colors duration-500', className)}>
       <ul
-        className={cn('flex gap-[60px] pr-7.5 items-center', {
+        className={cn('flex gap-3.75 pr-3.75 items-center lg:gap-7.5 lg:pr-7.5', {
           'flex-col items-[normal] text-[34px] leading-[40px] gap-1.25 items-start': mobile,
         })}
       >

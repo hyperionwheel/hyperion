@@ -1,6 +1,9 @@
+import { Container } from '@/components/container'
 import { ExternalTemplate } from '@/components/external-template'
-
+import { PartnershipForm } from '@/components/partnership-form'
+import { Typography } from '@/components/ui/typography'
 import { Metadata } from 'next'
+import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
 type PartnershipProps = {
@@ -19,9 +22,20 @@ export async function generateMetadata({ params: { locale } }: PartnershipProps)
 export default function Partnership({ params: { locale } }: PartnershipProps) {
   unstable_setRequestLocale(locale)
 
+  const t = useTranslations('partnership')
+
   return (
-    <ExternalTemplate container>
-      <h1>Partnership</h1>
+    <ExternalTemplate mobileCTA>
+      <div className="bg-primary-main pt-[121px] pb-[38px] md:pt-[167px] md:pb-[237px]">
+        <Container>
+          <div className="text-white md:max-w-[671px]">
+            <Typography variant="Sharp Grotesk Body 1">{t('description')}</Typography>
+          </div>
+          <div className="mt-5 md:max-w-[557px]">
+            <PartnershipForm />
+          </div>
+        </Container>
+      </div>
     </ExternalTemplate>
   )
 }

@@ -44,13 +44,14 @@ const config: Config = {
       neutral: {
         ...colors.neutral,
       },
+      current: 'currentColor',
     },
     borderRadius: {
       md: '8px',
     },
     extend: {
       animation: {
-        logo: 'logo 1s ease-in-out',
+        logo: 'logo 1s cubic-bezier(.86, 0, .07, 1)',
       },
       keyframes: {
         logo: {
@@ -74,6 +75,7 @@ const config: Config = {
         2: '16px',
         2.5: '20px',
         3: '24px',
+        3.5: '28px',
         3.75: '30px',
         4: '32px',
         4.5: '36px',
@@ -85,6 +87,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 }
 export default config

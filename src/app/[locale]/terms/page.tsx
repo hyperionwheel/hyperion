@@ -23,58 +23,48 @@ export default function Terms({ params: { locale } }: TermsProps) {
   const t = useTranslations('terms')
 
   return (
-    <ExternalTemplate container>
+    <ExternalTemplate mobileCTA offsetHeader container>
       <Title>{t('title')}</Title>
       <Text medium>{t('introduction.title')}</Text>
       <Text>{t('introduction.content1')}</Text>
-
       <Point>
         <Title sub>{t('company_information.title')}</Title>
         <List dangerouslySetInnerHTML={{ __html: t.raw('company_information.content1') }} />
       </Point>
-
       <Point>
         <Title sub>{t('definitions.title')}</Title>
         <List dangerouslySetInnerHTML={{ __html: t.raw('definitions.content1') }} />
       </Point>
-
       <Point>
         <Title sub>{t('use_website.title')}</Title>
         <Text>{t('use_website.content1')}</Text>
         <List dangerouslySetInnerHTML={{ __html: t.raw('use_website.content2') }} />
       </Point>
-
       <Point>
         <Title sub>{t('ticket_purchases.title')}</Title>
         <List dangerouslySetInnerHTML={{ __html: t.raw('ticket_purchases.content1') }} />
       </Point>
-
       <Point>
         <Title sub>{t('user_accounts.title')}</Title>
         <Text>{t('user_accounts.content1')}</Text>
       </Point>
-
       <Point>
         <Title sub>{t('promotional_offers.title')}</Title>
         <Text>{t('promotional_offers.content1')}</Text>
       </Point>
-
       <Point>
         <Title sub>{t('limitation.title')}</Title>
         <Text>{t('limitation.content1')}</Text>
         <List dangerouslySetInnerHTML={{ __html: t.raw('limitation.content2') }} />
       </Point>
-
       <Point>
         <Title sub>{t('governing_law.title')}</Title>
         <Text>{t('governing_law.content1')}</Text>
       </Point>
-
       <Point>
         <Title sub>{t('security.title')}</Title>
         <Text>{t('security.content1')}</Text>
       </Point>
-
       <Point>
         <Title sub>{t('changes_terms.title')}</Title>
         <Text>{t('changes_terms.content1')}</Text>
