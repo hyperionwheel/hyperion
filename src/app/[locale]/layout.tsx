@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { locales } from '@/i18n/routing'
@@ -32,6 +32,13 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
     title: t('home_meta_title'),
     description: t('home_meta_description'),
   }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export function generateStaticParams() {
