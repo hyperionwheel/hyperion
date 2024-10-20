@@ -37,8 +37,9 @@ const DialogContent = React.forwardRef<
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
+      data-lenis-prevent
       className={cn(
-        'fixed bg-white z-[999] overflow-y-auto pointer-events-auto top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[90vw] max-w-[900px] max-h-[85vh] p-3',
+        'fixed bg-white z-[999] overflow-y-auto top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[90vw] max-w-[900px] max-h-[85vh] p-3',
         className
       )}
       {...props}
