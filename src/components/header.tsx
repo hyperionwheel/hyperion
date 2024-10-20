@@ -39,7 +39,6 @@ export const Header = ({
   const [isDialogOpen, setDialogOpen] = useState(false)
 
   const lines = useLenis()
-  const size = useWindowSize()
   const pathname = usePathname()
   const scroll = useWindowScroll()
 
@@ -72,7 +71,7 @@ export const Header = ({
           <Link href="/" className="logo focus-visible:outline-none">
             <span
               className={cn('block', {
-                'animate-logo': pathname === '/' && scroll.y > size.height - headerHeight,
+                'animate-logo': pathname === '/' && isScrolled,
               })}
             >
               <HyperionLogo width={77} height={77} />
