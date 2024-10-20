@@ -37,7 +37,7 @@ export default function About({ params: { locale } }: AboutProps) {
       <TextImageSection
         title={t('where_sea_meets_sky_title')}
         description={t('where_sea_meets_sky_description')}
-        imageSrc={images.interactiveCabins}
+        imageSrc={images.unforgettableViews}
         overlay={false}
       />
       <OffersSection
