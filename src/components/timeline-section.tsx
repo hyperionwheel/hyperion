@@ -89,7 +89,7 @@ export const TimelineSection = () => {
                 className={cn(`transition-all duration-700 ease-in-out opacity-0 translate-y-2`, {
                   'opacity-100 translate-y-0': isVisible,
                 })}
-                style={{ transitionDelay: `${index * 700}ms` }}
+                style={{ transitionDelay: `${index * 500}ms` }}
               >
                 <p className="text-sm">{item.oppositeContent}</p>
                 {item.oppositeContent && (
@@ -110,7 +110,7 @@ export const TimelineSection = () => {
                 className={cn(`transition-all duration-700 ease-in-out opacity-0 -translate-y-2`, {
                   'opacity-100 translate-y-0': isVisible,
                 })}
-                style={{ transitionDelay: `${index * 700}ms` }}
+                style={{ transitionDelay: `${index * 500}ms` }}
               >
                 <p className="text-sm">{item.content}</p>
                 {item.content && (
