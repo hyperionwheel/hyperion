@@ -2,6 +2,7 @@ import { Container } from '@/components/container'
 import { ExternalTemplate } from '@/components/external-template'
 import { PartnershipForm } from '@/components/partnership-form'
 import { Typography } from '@/components/ui/typography'
+import { images } from '@/lib/constants'
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
@@ -26,7 +27,9 @@ export default function Partnership({ params: { locale } }: PartnershipProps) {
 
   return (
     <ExternalTemplate mobileCTA>
-      <div className="bg-primary-main pt-[121px] pb-[38px] md:pt-[167px] md:pb-[237px]">
+      <div
+        className={`bg-primary-main bg-none md:bg-[url(/images/partnership-Illustration.svg)] bg-[calc(50%_+_310px)_210px] bg-no-repeat pt-[121px] pb-[38px] md:pt-[167px] md:pb-[237px]`}
+      >
         <Container>
           <div className="text-white md:max-w-[671px]">
             <Typography variant="Sharp Grotesk Body 1">{t('description')}</Typography>
