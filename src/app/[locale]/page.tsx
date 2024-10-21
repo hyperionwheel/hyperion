@@ -32,7 +32,6 @@ export default function Home({ params: { locale } }: HomeProps) {
   return (
     <ExternalTemplate headerVariant="transparent" animation>
       <HeroSection format="video" source="/videos/hero.mp4" title={t('hero_title')} animation />
-      <AnimatedLogoSection />
       <TextImageSection
         title={t('discover_cyprus_views_title')}
         description={t('discover_cyprus_views_description')}

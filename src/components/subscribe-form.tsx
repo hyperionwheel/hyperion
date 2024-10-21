@@ -9,11 +9,16 @@ import { Button } from './ui/button'
 import { SendIcon } from '@/components/icons/send'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
+import { createSubscribeEntity } from '@/lib/actions'
+import { Typography } from './ui/typography'
+import { useState } from 'react'
 
 export const SubscribeForm = ({ className }: { className?: string }) => {
   const t = useTranslations()
+  const pathname = usePathname()
+  const [isSubmitted, setSubmitted] = useState(false)
 
   const {
     control,
@@ -23,14 +28,26 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
     resolver: zodResolver(subscribeSchema),
   })
 
-  const submitHandler = () => {
-    // TODO
+  const submitHandler = async ({ email }: z.infer<typeof subscribeSchema>) => {
+    const result = await createSubscribeEntity({ email, pathname })
+
+    if (result?.error) {
+      return
+    }
+
+    setSubmitted(true)
   }
 
   const buttonClasses = ['text-white', 'hover:bg-white', 'hover:border-white', 'hover:text-primary-main', 'w-full']
 
   return (
     <form className={className} onSubmit={handleSubmit(submitHandler)}>
+      {isSubmitted && (
+        <Typography className="uppercase pb-2" variant="Sharp Grotesk Body 1">
+          {t('subscribe.message.submitted')}
+        </Typography>
+      )}
+
       <div className="flex flex-col gap-2.5 md:flex-row">
         <div className="flex flex-col gap-2.5">
           <div className="flex gap-2.5">
@@ -63,14 +80,14 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
               render={({ field }) => (
                 <>
                   <Checkbox
-                    id="email"
-                    name={field.name}
-                    onBlur={field.onBlur}
-                    onChange={field.onChange}
+                    id="termsAndConditions"
                     checked={field.value}
+                    onCheckedChange={field.onChange}
+                    onBlur={field.onBlur}
+                    ref={field.ref}
                   />
                   <label
-                    htmlFor="email"
+                    htmlFor="termsAndConditions"
                     className="text-[12px] cursor-pointer text-white leading-[20px] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
                     {t.rich('subscribe.terms_privacy.label', {

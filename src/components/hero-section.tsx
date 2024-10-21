@@ -6,6 +6,7 @@ import { getUploadCareUrl } from '@/lib/uploadcare'
 import Image from 'next/image'
 import { useHomeAnimationStore } from '@/hooks/useHomeAnimationStore'
 import { cn } from '@/lib/utils'
+import { AnimatedLogoSection } from './animated-logo-section'
 
 type HeroSectionProps = {
   format: 'image' | 'video'
@@ -36,7 +37,7 @@ export const HeroSection = ({ title, description, format, source, animation = fa
           <Typography
             variant="Sharp Grotesk H1"
             className={cn('text-white max-w-[90%] md:max-w-[1020px]', {
-              'duration-500 opacity-0': animation,
+              'opacity-0': animation,
               'animate-fade-up opacity-1': animation && isLogoAnimated,
             })}
           >
@@ -50,6 +51,8 @@ export const HeroSection = ({ title, description, format, source, animation = fa
         </div>
         <div className="absolute inset-0 bg-hero-gradient" />
       </ParallaxBanner>
+
+      {animation && <AnimatedLogoSection />}
     </section>
   )
 }
