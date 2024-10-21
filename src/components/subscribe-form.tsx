@@ -43,7 +43,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
   return (
     <form className={className} onSubmit={handleSubmit(submitHandler)}>
       {isSubmitted && (
-        <Typography className="uppercase pb-2" variant="Sharp Grotesk Body 1">
+        <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
           {t('subscribe.message.submitted')}
         </Typography>
       )}
