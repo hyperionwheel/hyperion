@@ -1,12 +1,12 @@
 'use client'
 
+import { AnimatedLogoSection } from './animated-logo-section'
 import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax'
 import { Typography } from './ui/typography'
 import { getUploadCareUrl } from '@/lib/uploadcare'
 import Image from 'next/image'
 import { useHomeAnimationStore } from '@/hooks/useHomeAnimationStore'
 import { cn } from '@/lib/utils'
-import { AnimatedLogoSection } from './animated-logo-section'
 
 type HeroSectionProps = {
   format: 'image' | 'video'
