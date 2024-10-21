@@ -15,17 +15,24 @@ import { createSubscribeEntity } from '@/lib/actions'
 import { Typography } from './ui/typography'
 import { useState } from 'react'
 
+const defaultValues = {
+  email: '',
+  termsAndConditions: undefined,
+}
+
 export const SubscribeForm = ({ className }: { className?: string }) => {
   const t = useTranslations()
   const pathname = usePathname()
   const [isSubmitted, setSubmitted] = useState(false)
 
   const {
+    reset,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<z.infer<typeof subscribeSchema>>({
     resolver: zodResolver(subscribeSchema),
+    defaultValues,
   })
 
   const submitHandler = async ({ email }: z.infer<typeof subscribeSchema>) => {
@@ -35,19 +42,22 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
       return
     }
 
+    reset(defaultValues)
     setSubmitted(true)
   }
 
   const buttonClasses = ['text-white', 'hover:bg-white', 'hover:border-white', 'hover:text-primary-main', 'w-full']
 
+  if (isSubmitted) {
+    return (
+      <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
+        {t('subscribe.message.submitted')}
+      </Typography>
+    )
+  }
+
   return (
     <form className={className} onSubmit={handleSubmit(submitHandler)}>
-      {isSubmitted && (
-        <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
-          {t('subscribe.message.submitted')}
-        </Typography>
-      )}
-
       <div className="flex flex-col gap-2.5 md:flex-row">
         <div className="flex flex-col gap-2.5">
           <div className="flex gap-2.5">

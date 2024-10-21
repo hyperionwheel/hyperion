@@ -48,13 +48,16 @@ export const PartnershipForm = () => {
     setSubmitted(true)
   }
 
+  if (isSubmitted) {
+    return (
+      <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
+        {t('message.submitted')}
+      </Typography>
+    )
+  }
+
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
-      {isSubmitted && (
-        <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
-          {t('message.submitted')}
-        </Typography>
-      )}
       <div className="flex flex-col gap-1.25">
         <Controller
           name="name"

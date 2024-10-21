@@ -26,9 +26,7 @@ export default function Partnership({ params: { locale } }: PartnershipProps) {
 
   return (
     <ExternalTemplate mobileCTA>
-      <div
-        className={`bg-primary-main bg-none md:bg-[url(/images/partnership-Illustration.svg)] bg-[calc(50%_+_310px)_210px] bg-no-repeat pt-[121px] pb-[38px] md:pt-[167px] md:pb-[237px]`}
-      >
+      <div className="bg-primary-main min-h-auto bg-none md:bg-[url(/images/partnership-Illustration.svg)] bg-bottom bg-no-repeat pt-[121px] pb-[38px] md:min-h-[1022px] md:pt-[167px] md:pb-[237px]">
         <Container>
           <div className="text-white md:max-w-[671px]">
             <Typography variant="Sharp Grotesk Body 1">{t('description')}</Typography>
