@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useWindowScroll, useWindowSize } from 'react-use'
+import { useWindowScroll } from 'react-use'
 import { Button } from '@/components/ui/button'
 import { Link, usePathname } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
