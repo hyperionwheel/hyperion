@@ -42,6 +42,7 @@ export const Header = ({
   const pathname = usePathname()
   const scroll = useWindowScroll()
 
+  const { setLogoAnimated } = useHomeAnimationStore()
   const isLogoAnimated = useHomeAnimationStore((state) => state.isLogoAnimated)
 
   const headerHeight = headerRef.current?.offsetHeight ?? 0
@@ -52,10 +53,13 @@ export const Header = ({
       headerRef.current?.classList.toggle('is-scrolled', isScrolled)
       headerRef.current?.classList.toggle('is-menu', isAsideVisible)
     }
+
+    if (isScrolled || isLogoAnimated) setLogoAnimated()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isScrolled, isAsideVisible])
 
   const animationClasses = cn({
-    'opacity-0': animation,
+    'opacity-0 duration-300': animation,
     'opacity-1': isLogoAnimated && animation,
   })
 

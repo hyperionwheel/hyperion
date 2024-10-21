@@ -10,7 +10,7 @@ export const AnimatedLogoSection = () => {
   if (isLogoAnimated) return null
 
   return (
-    <section className="fixed overflow-hidden top-[50%] right-[50%] translate-x-[50%] -translate-y-[50%]">
+    <section className="absolute overflow-hidden top-[50%] right-[50%] translate-x-[50%] -translate-y-[50%]">
       <AnimatedLogo onComplete={setLogoAnimated} />
     </section>
   )

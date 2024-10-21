@@ -53,7 +53,7 @@ const config: Config = {
     extend: {
       animation: {
         logo: 'logo 1s cubic-bezier(.86, 0, .07, 1)',
-        'fade-up': 'fade-up 0.8s ease-out',
+        'fade-up': 'fade-up 1s ease-out',
       },
       keyframes: {
         'fade-up': {

@@ -9,24 +9,52 @@ import { useTranslations } from 'next-intl'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Button } from './ui/button'
+import { createPartnershipEntity } from '@/lib/actions'
+import { usePathname } from '@/i18n/routing'
+import { Typography } from './ui/typography'
+import { useState } from 'react'
+
+const defaultValues = {
+  name: '',
+  companyName: '',
+  email: '',
+  partnershipInterests: '',
+  message: '',
+}
 
 export const PartnershipForm = () => {
   const t = useTranslations('partnership')
+  const pathname = usePathname()
+  const [isSubmitted, setSubmitted] = useState(false)
 
   const {
+    reset,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues,
   })
 
-  const submitHandler = () => {
-    // TODO
+  const submitHandler = async (data: z.infer<typeof contactFormSchema>) => {
+    const result = await createPartnershipEntity({ ...data, pathname })
+
+    if (result?.error) {
+      return
+    }
+
+    reset(defaultValues)
+    setSubmitted(true)
   }
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
+      {isSubmitted && (
+        <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
+          {t('message.submitted')}
+        </Typography>
+      )}
       <div className="flex flex-col gap-1.25">
         <Controller
           name="name"
