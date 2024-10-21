@@ -1,4 +1,3 @@
-import { AnimatedLogoSection } from '@/components/animated-logo-section'
 import { ExternalTemplate } from '@/components/external-template'
 import { HeroSection } from '@/components/hero-section'
 import { OffersSection } from '@/components/offers-section'
