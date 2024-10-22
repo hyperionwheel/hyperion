@@ -33,14 +33,12 @@ export const HeroSection = ({ title, description, format, source, animation = fa
             <Image fill src={getUploadCareUrl({ src: source })} alt="Image" style={{ objectFit: 'cover' }} />
           )}
         </ParallaxBannerLayer>
-        <div className="relative 2xl:container mx-auto z-[1] px-1.25 pb-3 w-full md:pb-5 md:px-5">
-          <Typography
-            variant="Sharp Grotesk H1"
-            className={cn('text-white max-w-[90%] md:max-w-[1020px]', {
-              'opacity-0': animation,
-              'animate-fade-up opacity-1': animation && isLogoAnimated,
-            })}
-          >
+        <div
+          className={cn('relative 2xl:container mx-auto z-[1] px-1.25 pb-3 w-full md:pb-5 md:px-5 opacity-0', {
+            'animate-fade-up opacity-1': (animation && isLogoAnimated) || !animation,
+          })}
+        >
+          <Typography variant="Sharp Grotesk H1" className="text-white max-w-[90%] md:max-w-[1020px]">
             {title}
           </Typography>
           {description && (
