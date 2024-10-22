@@ -46,7 +46,14 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
     setSubmitted(true)
   }
 
-  const buttonClasses = ['text-white', 'hover:bg-white', 'hover:border-white', 'hover:text-primary-main', 'w-full']
+  const buttonClasses = [
+    'text-white',
+    'border-white',
+    'hover:bg-white',
+    'hover:border-white',
+    'hover:text-primary-main',
+    'w-full',
+  ]
 
   if (isSubmitted) {
     return (
