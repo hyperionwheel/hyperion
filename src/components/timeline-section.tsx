@@ -33,8 +33,6 @@ export const TimelineSection = () => {
     }
   }, [intersection])
 
-  console.log(intersection)
-
   const timelines = [
     {
       size: 58,
