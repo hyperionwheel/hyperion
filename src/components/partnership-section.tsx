@@ -1,3 +1,4 @@
+import { Link } from '@/i18n/routing'
 import { Button } from './ui/button'
 import { useTranslations } from 'next-intl'
 
@@ -14,8 +15,8 @@ export const PartnershipSection = () => {
           <p className="text-base mt-2.5 max-w-full text-white md:text-xl md:max-w-[555px]">
             {t('partnership_description')}
           </p>
-          <Button variant="secondary" className="w-full mt-2.5 md:w-auto">
-            {t('partnership_cta')}
+          <Button asChild variant="secondary" className="w-full mt-2.5 md:w-auto">
+            <Link href="/partnership">{t('partnership_cta')}</Link>
           </Button>
         </div>
       </div>
