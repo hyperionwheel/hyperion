@@ -5,8 +5,7 @@ import { CookieIcon } from './icons/cookie'
 import { Button } from './ui/button'
 import { useEffect, useState } from 'react'
 import { cn, getLocalStorage, setLocalStorage } from '@/lib/utils'
-
-const COOKIE_CONSENT_KEY = 'cookie_consent'
+import { COOKIE_CONSENT_KEY } from '@/lib/constants'
 
 export const CookieConsent = () => {
   const t = useTranslations('cookie_consent')

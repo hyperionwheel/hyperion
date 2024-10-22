@@ -9,7 +9,7 @@ export const images = {
   advancedTechnology: 'https://ucarecdn.com/d98d28a5-db1b-4934-b213-ee154bb26295/',
   familyFun: 'https://ucarecdn.com/63e63bcf-0b11-4ec6-8d3e-44220b66e25c/',
   cyprusExperience: 'https://ucarecdn.com/6fcd47dd-35f3-430e-9f30-f8ea91a31e99/',
-  interactiveCabins: 'https://ucarecdn.com/a6c72172-a6fb-44fb-94f0-09f1e87e6166/', //??
+  interactiveCabins: 'https://ucarecdn.com/a6c72172-a6fb-44fb-94f0-09f1e87e6166/',
   unforgettableViews: 'https://ucarecdn.com/80668277-ba6f-4bb4-8694-5ff52ef96f50/',
   aboutHero: 'https://ucarecdn.com/2be9c439-546f-4f47-8720-85f48b27a0d4/',
   beyondTheWheel: 'https://ucarecdn.com/9d5e60ad-cf53-496a-9d56-a4a2593f36a6/',
@@ -21,3 +21,5 @@ export const images = {
   innovativeEngineering3: 'https://ucarecdn.com/9a0898a9-e9e6-484d-a9d8-099973908aea/',
   cyprusFrom143Meters: 'https://ucarecdn.com/60af8f62-e56e-4e88-a88e-9923448ffbb9/',
 }
+
+export const COOKIE_CONSENT_KEY = 'cookie_consent'

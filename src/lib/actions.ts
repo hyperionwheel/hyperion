@@ -10,7 +10,7 @@ export async function createSubscribeEntity({ email, pathname }: { email: string
     const sheet = googleSheet.sheetsByIndex[0]
     await sheet.addRow({ date, email, pathname })
   } catch (e) {
-    console.log(e)
+    console.error(e)
 
     return {
       error: 'Failed to create the record.',
@@ -48,7 +48,7 @@ export async function createPartnershipEntity({
       message,
     })
   } catch (e) {
-    console.log(e)
+    console.error(e)
 
     return {
       error: 'Failed to create the record.',

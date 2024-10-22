@@ -24,7 +24,7 @@ export const TimelineSection = () => {
   const intersection = useIntersection(intersectionRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: 0.5,
   })
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const TimelineSection = () => {
       size: 58,
       variant: 'completed',
       connectors: [true, true],
-      oppositeContent: 'Acceptence from President Office',
+      oppositeContent: t('timeline.content1'),
       content: null,
     },
     {
@@ -46,26 +46,26 @@ export const TimelineSection = () => {
       variant: 'active',
       connectors: [true, true],
       oppositeContent: null,
-      content: 'Acceptance Building Permit',
+      content: t('timeline.content2'),
     },
     {
       size: 38,
       variant: 'inactive',
       connectors: [false, false],
       content: null,
-      oppositeContent: 'Constrution',
+      oppositeContent: t('timeline.content3'),
     },
     {
       size: 28,
       variant: 'inactive',
       connectors: [false, false],
       oppositeContent: null,
-      content: 'Open ceremony',
+      content: t('timeline.content4'),
     },
   ]
 
   return (
-    <section className="animate-wiggle 2xl:container mx-auto ">
+    <section ref={intersectionRef} className="animate-wiggle 2xl:container mx-auto ">
       <div className="relative px-1.25 md:px-5">
         <h2
           className={cn(
@@ -80,12 +80,12 @@ export const TimelineSection = () => {
         <p className="text-base mt-3 max-w-full md:text-xl lg:max-w-[450px]">{t('timeline_description')}</p>
       </div>
       <div className="relative py-5 md:py-10">
-        <Timeline ref={intersectionRef}>
+        <Timeline>
           {timelines.map((item, index) => (
             <TimelineItem key={index}>
               <TimelineOppositeContent
-                className={cn(`transition-all duration-700 opacity-0`, {
-                  'opacity-100 fade-up': isVisible,
+                className={cn(`transition-all duration-700 opacity-0 translate-y-1`, {
+                  'opacity-100 translate-y-0': isVisible,
                 })}
                 style={{ transitionDelay: `${index * 500}ms` }}
               >
@@ -105,8 +105,8 @@ export const TimelineSection = () => {
                 <TimelineConnector active={item.connectors[1]} />
               </TimelineSeparator>
               <TimelineContent
-                className={cn(`transition-all duration-700 opacity-0`, {
-                  'opacity-1 fade-up': isVisible,
+                className={cn(`transition-all duration-700 opacity-0 translate-y-1`, {
+                  'opacity-1 translate-y-0': isVisible,
                 })}
                 style={{ transitionDelay: `${index * 500}ms` }}
               >

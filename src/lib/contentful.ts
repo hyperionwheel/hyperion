@@ -1,15 +1,15 @@
-import { NextTags } from "@/lib/constants";
-import { toTranslationObject } from "@/utils/translations";
-import { AbstractIntlMessages } from "next-intl";
+import { NextTags } from '@/lib/constants'
+import { toTranslationObject } from '@/utils/translations'
+import { AbstractIntlMessages } from 'next-intl'
 
 export const getContentfulTranslations = async ({
   locale,
   limit = 1000,
-  content_type = "translations",
+  content_type = 'translations',
 }: {
-  locale: string;
-  limit?: number;
-  content_type?: string;
+  locale: string
+  limit?: number
+  content_type?: string
 }): Promise<AbstractIntlMessages> => {
   try {
     const response = await fetch(
@@ -22,14 +22,14 @@ export const getContentfulTranslations = async ({
           tags: [NextTags.ContentfulTranslations],
         },
       }
-    );
+    )
 
-    const data = await response.json();
+    const data = await response.json()
 
-    return toTranslationObject(data.items);
+    return toTranslationObject(data.items)
   } catch (error) {
-    console.error(error);
+    console.error(error)
 
-    return {};
+    return {}
   }
-};
+}
