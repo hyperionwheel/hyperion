@@ -11,7 +11,6 @@ export const images = {
   cyprusExperience: 'https://ucarecdn.com/6fcd47dd-35f3-430e-9f30-f8ea91a31e99/',
   interactiveCabins: 'https://ucarecdn.com/a6c72172-a6fb-44fb-94f0-09f1e87e6166/', //??
   unforgettableViews: 'https://ucarecdn.com/80668277-ba6f-4bb4-8694-5ff52ef96f50/',
-  partnership: 'https://ucarecdn.com/bf6f0f93-f052-4bde-94d1-d16b8bf0956e/',
   aboutHero: 'https://ucarecdn.com/2be9c439-546f-4f47-8720-85f48b27a0d4/',
   beyondTheWheel: 'https://ucarecdn.com/9d5e60ad-cf53-496a-9d56-a4a2593f36a6/',
   groundFloor: 'https://ucarecdn.com/6a76fec0-926b-48b5-9605-66c18df37e81/',
