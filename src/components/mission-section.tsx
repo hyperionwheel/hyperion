@@ -19,7 +19,7 @@ export const MissionSection = () => {
           <PinkOutlineCard description={t('content1')} />
           <PinkOutlineCard description={t('content2')} />
         </div>
-        <div className="bg-primary-main mt-4 py-[60px] px-[33px] md:px-[40px] md:py-[117px] md:mt-2">
+        <div className="bg-[url(/images/primary-to-secondary-illustration.svg)] bg-primary-main bg-right-bottom bg-no-repeat bg-cover mt-4 py-[60px] px-[33px] md:px-[40px] md:py-[117px] md:mt-2">
           <p className="text-white font-medium text-base leading-[20px] md:text-[36px] md:leading-[46px]">
             {t('mission.content3')}
           </p>

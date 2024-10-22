@@ -34,7 +34,7 @@ export default function Home({ params: { locale } }: HomeProps) {
       <TextImageSection
         title={t('discover_cyprus_views_title')}
         description={t('discover_cyprus_views_description')}
-        imageSrc={images.interactiveCabins}
+        imageSrc={images.cyprusFrom143Meters}
         overlay={false}
       />
       <TimelineSection />
