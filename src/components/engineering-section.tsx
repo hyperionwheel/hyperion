@@ -11,7 +11,9 @@ export const EngineeringSection = () => {
       <div className="relative px-1.25 pt-3.5 md:pt-10 md:pb-7.5 md:px-5">
         <div className="grid grid-cols-1 gap-2.5 lg:gap-2 lg:grid-cols-2">
           <div className="flex-1">
-            <Typography variant="Sharp Grotesk H2">{t('title')}</Typography>
+            <Typography className="md:sticky md:top-[150px] md:z-1" variant="Sharp Grotesk H2">
+              {t('title')}
+            </Typography>
           </div>
           <div className="flex-1 relative">
             <div className="flex flex-row py-3 overflow-x-auto -mx-1.25 md:mx-0 gap-0 md:py-0 md:gap-3 scrollbar-hide md:flex-col">
