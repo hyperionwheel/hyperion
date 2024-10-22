@@ -98,7 +98,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
                   />
                   <label
                     htmlFor="termsAndConditions"
-                    className="text-[12px] cursor-pointer text-white leading-[20px] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="text-[8px] leading-[10px] cursor-pointer text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sm:text-[12px] md:leading-[20px]"
                   >
                     {t.rich('subscribe.terms_privacy.label', {
                       terms: (chunks) => (
