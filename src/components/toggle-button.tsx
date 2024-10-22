@@ -1,6 +1,6 @@
 'use client'
 
-export const ToggleButton = ({ isOpen, toggleMenu }: { isOpen: boolean; toggleMenu: () => void }) => (
+export const ToggleButton = ({ isOpen, toggleMenu }: { isOpen: boolean; toggleMenu?: () => void }) => (
   <button
     type="button"
     onClick={toggleMenu}

@@ -4,6 +4,8 @@ import { SubscribeForm } from './subscribe-form'
 import { Dialog, DialogContent } from './ui/dialog'
 import { useTranslations } from 'next-intl'
 import { Typography } from './ui/typography'
+import { useIsMobile } from '@/hooks/useIsMobile'
+import { cn } from '@/lib/utils'
 
 type ClaimRewardDialogProps = {
   open: boolean
@@ -12,14 +14,23 @@ type ClaimRewardDialogProps = {
 
 export const ClaimRewardDialog = ({ open, onOpenChange }: ClaimRewardDialogProps) => {
   const t = useTranslations('reward_dialog')
+  const isMobile = useIsMobile()
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-[url(/images/secondary-to-primary-illustration.svg)] text-white bg-right-bottom bg-no-repeat bg-cover py-6 lg:px-[110px]">
-        <Typography variant="Sharp Grotesk H3">{t('title')}</Typography>
-        <Typography className="py-3" variant="Sharp Grotesk Body 1">
-          {t('description')}
-        </Typography>
+      <DialogContent className="bg-[url(/images/secondary-to-primary-illustration.svg)] text-white bg-right-bottom bg-no-repeat bg-cover py-[70px] md:py-6 px-[33px] lg:px-[110px]">
+        <h4
+          className={cn('text-[24px] leading-[30px] md:text-[40px] md:leading-[51px]', {
+            'mb-2.5': isMobile,
+          })}
+        >
+          {t(isMobile ? 'mobile_title' : 'title')}
+        </h4>
+        {!isMobile && (
+          <Typography className="py-3" variant="Sharp Grotesk Body 1">
+            {t('description')}
+          </Typography>
+        )}
         <SubscribeForm />
       </DialogContent>
     </Dialog>
