@@ -28,7 +28,7 @@ export default function FAQ({ params: { locale } }: FAQProps) {
   return (
     <ExternalTemplate headerVariant="white">
       <div className="bg-secondary-main pt-[116px]">
-        <Container className="md:pt-[68px] pb-[34px] md:pb-[54px]">
+        <Container className="pt-[22px] md:pt-[68px] pb-[34px] md:pb-[54px]">
           <Typography className="text-white" variant="Sharp Grotesk H1">
             {t('title')}
           </Typography>
