@@ -22,4 +22,10 @@ export const images = {
   cyprusFrom143Meters: 'https://ucarecdn.com/60af8f62-e56e-4e88-a88e-9923448ffbb9/',
 }
 
+export const videos = {
+  hero: '/videos/hero.mp4',
+  home: '/videos/unforgettable-views.mp4',
+  about: '/videos/where-sea-meets-sky.mp4',
+}
+
 export const COOKIE_CONSENT_KEY = 'cookie_consent'
