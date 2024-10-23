@@ -63,14 +63,14 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
 
   if (isSubmitted) {
     return (
-      <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
+      <Typography className={cn('text-white uppercase py-2')} variant="Sharp Grotesk Body 1">
         {t('subscribe.message.submitted')}
       </Typography>
     )
   }
 
   return (
-    <form className={className} onSubmit={handleSubmit(submitHandler)}>
+    <form className={cn('mt-2.5', className)} onSubmit={handleSubmit(submitHandler)}>
       <div className="flex flex-col gap-2.5 md:flex-row">
         <div className="flex flex-col gap-2.5">
           <div className="flex gap-2.5">
@@ -132,8 +132,8 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
             />
           </div>
           <Button
-            loading={isLoading}
             type="submit"
+            loading={isLoading}
             className={cn('flex md:hidden', buttonClasses)}
             variant="outlined"
             size="icon"
