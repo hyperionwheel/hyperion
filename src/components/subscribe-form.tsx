@@ -13,7 +13,7 @@ import { Link, usePathname } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import { createSubscribeEntity } from '@/lib/actions'
 import { Typography } from './ui/typography'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 const defaultValues = {
   email: '',
@@ -21,6 +21,7 @@ const defaultValues = {
 }
 
 export const SubscribeForm = ({ className }: { className?: string }) => {
+  const id = useId()
   const t = useTranslations()
   const pathname = usePathname()
 
@@ -104,14 +105,14 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
               render={({ field }) => (
                 <>
                   <Checkbox
-                    id="termsAndConditions"
+                    id={id}
                     checked={field.value}
                     onCheckedChange={field.onChange}
                     onBlur={field.onBlur}
                     ref={field.ref}
                   />
                   <label
-                    htmlFor="termsAndConditions"
+                    htmlFor={id}
                     className="text-[8px] leading-[10px] cursor-pointer text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sm:text-[12px] sm:leading-[16px] md:leading-[20px]"
                   >
                     {t.rich('subscribe.terms_privacy.label', {
