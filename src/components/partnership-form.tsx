@@ -25,6 +25,8 @@ const defaultValues = {
 export const PartnershipForm = () => {
   const t = useTranslations('partnership')
   const pathname = usePathname()
+
+  const [isLoading, setLoading] = useState(false)
   const [isSubmitted, setSubmitted] = useState(false)
 
   const {
@@ -38,7 +40,11 @@ export const PartnershipForm = () => {
   })
 
   const submitHandler = async (data: z.infer<typeof contactFormSchema>) => {
+    setLoading(true)
+
     const result = await createPartnershipEntity({ ...data, pathname })
+
+    setLoading(false)
 
     if (result?.error) {
       return
@@ -77,7 +83,7 @@ export const PartnershipForm = () => {
           name="email"
           control={control}
           render={({ field }) => {
-            return <Input {...field} placeholder={t('email_address.label')} error={!!errors.email} />
+            return <Input {...field} type="email" placeholder={t('email_address.label')} error={!!errors.email} />
           }}
         />
         <Controller
@@ -98,7 +104,7 @@ export const PartnershipForm = () => {
         />
       </div>
 
-      <Button className="w-full mt-2 md:w-auto" type="submit" variant="secondary">
+      <Button loading={isLoading} className="w-full mt-2 md:w-auto" type="submit" variant="secondary">
         {t('cta')}
       </Button>
     </form>

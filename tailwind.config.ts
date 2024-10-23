@@ -54,6 +54,7 @@ const config: Config = {
       animation: {
         logo: 'logo 1s cubic-bezier(.86, 0, .07, 1)',
         'fade-up': 'fade-up 0.8s ease-in-out',
+        l13: 'l13 1s infinite linear',
       },
       keyframes: {
         'fade-up': {
@@ -64,6 +65,9 @@ const config: Config = {
           to: {
             transform: 'rotate(360deg)',
           },
+        },
+        l13: {
+          '100%': { transform: 'rotate(1turn)' },
         },
       },
       backgroundImage: {
