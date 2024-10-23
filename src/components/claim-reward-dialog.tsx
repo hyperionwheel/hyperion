@@ -19,15 +19,11 @@ export const ClaimRewardDialog = ({ open, onOpenChange }: ClaimRewardDialogProps
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-[url(/images/secondary-to-primary-illustration.svg)] text-white bg-right-bottom bg-no-repeat bg-cover py-[70px] md:py-6 px-[33px] lg:px-[110px]">
-        <h4
-          className={cn('text-[24px] leading-[30px] md:text-[40px] md:leading-[51px]', {
-            'mb-2.5': isMobile,
-          })}
-        >
+        <h4 className={cn('text-[24px] leading-[30px] md:text-[40px] md:leading-[51px]', {})}>
           {t(isMobile ? 'mobile_title' : 'title')}
         </h4>
         {!isMobile && (
-          <Typography className="py-3" variant="Sharp Grotesk Body 1">
+          <Typography className="pt-2.5" variant="Sharp Grotesk Body 1">
             {t('description')}
           </Typography>
         )}
