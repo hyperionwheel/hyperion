@@ -23,6 +23,8 @@ const defaultValues = {
 export const SubscribeForm = ({ className }: { className?: string }) => {
   const t = useTranslations()
   const pathname = usePathname()
+
+  const [isLoading, setLoading] = useState(false)
   const [isSubmitted, setSubmitted] = useState(false)
 
   const {
@@ -36,7 +38,11 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
   })
 
   const submitHandler = async ({ email }: z.infer<typeof subscribeSchema>) => {
+    setLoading(true)
+
     const result = await createSubscribeEntity({ email, pathname })
+
+    setLoading(false)
 
     if (result?.error) {
       return
@@ -82,6 +88,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
               )}
             />
             <Button
+              loading={isLoading}
               type="submit"
               className={cn('hidden md:w-[56px] md:flex', buttonClasses)}
               variant="outlined"
@@ -105,7 +112,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
                   />
                   <label
                     htmlFor="termsAndConditions"
-                    className="text-[8px] leading-[10px] cursor-pointer text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sm:text-[12px] md:leading-[20px]"
+                    className="text-[8px] leading-[10px] cursor-pointer text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sm:text-[12px] sm:leading-[16px] md:leading-[20px]"
                   >
                     {t.rich('subscribe.terms_privacy.label', {
                       terms: (chunks) => (
@@ -124,7 +131,13 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
               )}
             />
           </div>
-          <Button type="submit" className={cn('flex md:hidden', buttonClasses)} variant="outlined" size="icon">
+          <Button
+            loading={isLoading}
+            type="submit"
+            className={cn('flex md:hidden', buttonClasses)}
+            variant="outlined"
+            size="icon"
+          >
             <SendIcon />
           </Button>
         </div>
