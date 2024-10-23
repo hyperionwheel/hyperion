@@ -6,7 +6,7 @@ import { PartnershipSection } from '@/components/partnership-section'
 import { SignupBanner } from '@/components/signup-banner'
 import { TextImageSection } from '@/components/text-image-section'
 import { TimelineSection } from '@/components/timeline-section'
-import { images } from '@/lib/constants'
+import { images, videos } from '@/lib/constants'
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
@@ -30,25 +30,26 @@ export default function Home({ params: { locale } }: HomeProps) {
 
   return (
     <ExternalTemplate headerVariant="transparent" animation>
-      <HeroSection format="video" source="/videos/hero.mp4" title={t('hero_title')} animation />
+      <HeroSection format="video" source={videos.hero} title={t('hero_title')} animation />
       <TextImageSection
         title={t('discover_cyprus_views_title')}
         description={t('discover_cyprus_views_description')}
-        imageSrc={images.cyprusFrom143Meters}
+        source={images.cyprusFrom143Meters}
         overlay={false}
       />
       <TimelineSection />
       <PartnershipSection />
       <TextImageSection
+        format="video"
         title={t('unforgettable_views_title')}
         description={t('unforgettable_views_description')}
-        imageSrc={images.unforgettableViews}
+        source={videos.home}
       />
       <ParallaxSection imageSrc={images.hero1} />
       <TextImageSection
         title={t('interactive_cabins_title')}
         description={t('interactive_cabins_description')}
-        imageSrc={images.interactiveCabins}
+        source={images.interactiveCabins}
       />
       <OffersSection
         offers={[

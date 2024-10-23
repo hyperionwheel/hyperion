@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/hero-section'
 import { MissionSection } from '@/components/mission-section'
 import { OffersSection } from '@/components/offers-section'
 import { TextImageSection } from '@/components/text-image-section'
-import { images } from '@/lib/constants'
+import { images, videos } from '@/lib/constants'
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
@@ -35,9 +35,10 @@ export default function About({ params: { locale } }: AboutProps) {
         description={t('hero_description')}
       />
       <TextImageSection
+        format="video"
         title={t('where_sea_meets_sky_title')}
         description={t('where_sea_meets_sky_description')}
-        imageSrc={images.unforgettableViews}
+        source={videos.about}
         overlay={false}
       />
       <OffersSection

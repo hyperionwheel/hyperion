@@ -5,16 +5,16 @@ import Image from 'next/image'
 export const TextImageSection = ({
   title,
   description,
-  imageSrc,
   overlay = true,
+  format = 'image',
+  source,
 }: {
   title: string
   description?: string
-  imageSrc: string
   overlay?: boolean
+  format?: 'image' | 'video'
+  source: string
 }) => {
-  const image = getUploadCareUrl({ src: imageSrc })
-
   const Title = (
     <h2
       className={cn(
@@ -47,7 +47,15 @@ export const TextImageSection = ({
             </div>
           </div>
           <div className="mt-3 lg:mt-0 flex justify-end lg:max-w-[650px] xl:max-w-[787px]">
-            <Image className="w-full " src={image} alt={title} width={787} height={460} />
+            {format === 'image' && (
+              <Image className="w-full " src={getUploadCareUrl({ src: source })} alt={title} width={787} height={460} />
+            )}
+            {format === 'video' && (
+              <video playsInline autoPlay loop muted preload="meta">
+                <source src={source} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </div>
       </div>
