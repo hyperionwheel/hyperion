@@ -13,7 +13,7 @@ import { Link, usePathname } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import { createSubscribeEntity } from '@/lib/actions'
 import { Typography } from './ui/typography'
-import { useId, useState } from 'react'
+import { useState } from 'react'
 
 const defaultValues = {
   email: '',
@@ -21,7 +21,6 @@ const defaultValues = {
 }
 
 export const SubscribeForm = ({ className }: { className?: string }) => {
-  const id = useId()
   const t = useTranslations()
   const pathname = usePathname()
 
@@ -98,23 +97,19 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
               <SendIcon />
             </Button>
           </div>
-          <div className="flex space-x-2">
-            <Controller
-              name="termsAndConditions"
-              control={control}
-              render={({ field }) => (
-                <>
-                  <Checkbox
-                    id={id}
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    onBlur={field.onBlur}
-                    ref={field.ref}
-                  />
-                  <label
-                    htmlFor={id}
-                    className="text-[8px] leading-[10px] cursor-pointer text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sm:text-[12px] sm:leading-[16px] md:leading-[20px]"
-                  >
+          <Controller
+            name="termsAndConditions"
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                name={field.name}
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                onBlur={field.onBlur}
+                ref={field.ref}
+                error={!!errors.termsAndConditions}
+                label={
+                  <>
                     {t.rich('subscribe.terms_privacy.label', {
                       terms: (chunks) => (
                         <Link href="/terms" target="_blank">
@@ -127,11 +122,11 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
                         </Link>
                       ),
                     })}
-                  </label>
-                </>
-              )}
-            />
-          </div>
+                  </>
+                }
+              />
+            )}
+          />
           <Button
             type="submit"
             loading={isLoading}

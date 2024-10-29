@@ -69,11 +69,7 @@ export const Header = ({
       <div className="2xl:container mx-auto relative px-1.25 flex items-normal justify-between z-[1] md:px-5 md:items-center">
         <div className={cn('logo flex flex-1', animationClasses)}>
           <Link href="/" className="logo focus-visible:outline-none">
-            <span
-              className={cn('block', {
-                'animate-logo': pathname === '/' && isScrolled,
-              })}
-            >
+            <span suppressHydrationWarning className={cn('block', { 'animate-logo': pathname === '/' && isScrolled })}>
               <HyperionLogo width={77} height={77} />
             </span>
           </Link>
