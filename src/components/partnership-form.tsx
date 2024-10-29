@@ -63,7 +63,7 @@ export const PartnershipForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
+    <form onSubmit={handleSubmit(submitHandler)} noValidate>
       <div className="flex flex-col gap-1.25">
         <Controller
           name="name"

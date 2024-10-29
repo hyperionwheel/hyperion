@@ -71,7 +71,7 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
   }
 
   return (
-    <form className={cn('mt-2.5', className)} onSubmit={handleSubmit(submitHandler)}>
+    <form className={cn('mt-2.5', className)} onSubmit={handleSubmit(submitHandler)} noValidate>
       <div className="flex flex-col gap-2.5 md:flex-row">
         <div className="flex flex-col gap-2.5">
           <div className="flex gap-2.5">
