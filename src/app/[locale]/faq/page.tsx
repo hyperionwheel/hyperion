@@ -1,11 +1,11 @@
 import { ExternalTemplate } from '@/components/external-template'
-import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
 import { Container } from '@/components/container'
 
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { ClaimOfferButton } from '@/components/claim-offer-button'
 
 type FAQProps = {
   params: { locale: string }
@@ -35,7 +35,7 @@ export default function FAQ({ params: { locale } }: FAQProps) {
           <Typography className="text-white max-w-[555px] mt-3" variant="Sharp Grotesk Body 1">
             {t('description')}
           </Typography>
-          <Button className="w-full md:w-auto mt-3">{t('cta')}</Button>
+          <ClaimOfferButton label={t('cta')} />
         </Container>
       </div>
 

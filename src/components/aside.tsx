@@ -6,15 +6,13 @@ import { Button } from './ui/button'
 import { useTranslations } from 'next-intl'
 import { LegalMenu } from './legal-menu'
 import { useLenis } from 'lenis/react'
-import { ClaimRewardDialog } from './claim-reward-dialog'
-import { useState } from 'react'
+import { useClaimDialogStore } from '@/hooks/useClaimDialogStore'
 
 export const Aside = ({ open }: { open: boolean }) => {
   const t = useTranslations()
 
   const lines = useLenis()
-
-  const [isDialogOpen, setDialogOpen] = useState(false)
+  const { open: openClaimDialog } = useClaimDialogStore()
 
   return (
     <aside className={cn('fixed inset-0 invisible z-[21] text-white', { visible: open })}>
@@ -27,7 +25,7 @@ export const Aside = ({ open }: { open: boolean }) => {
               className="w-full mt-3"
               onClick={() => {
                 lines?.stop()
-                setDialogOpen(true)
+                openClaimDialog()
               }}
             >
               {t('header.cta')}
@@ -37,14 +35,6 @@ export const Aside = ({ open }: { open: boolean }) => {
           <LegalMenu />
         </div>
       </div>
-
-      <ClaimRewardDialog
-        open={isDialogOpen}
-        onOpenChange={() => {
-          lines?.start()
-          setDialogOpen(false)
-        }}
-      />
     </aside>
   )
 }

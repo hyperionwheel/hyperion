@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 import { Footer } from './footer'
 import { Headroom } from './headroom'
 import { CookieConsent } from './cookie-consent'
+import { DialogContainer } from './dialog-container'
 
 export const ExternalTemplate = ({
   children,
@@ -35,6 +36,8 @@ export const ExternalTemplate = ({
       <Footer />
 
       <CookieConsent />
+
+      <DialogContainer />
     </div>
   )
 }
