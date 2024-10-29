@@ -10,9 +10,10 @@ import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Button } from './ui/button'
 import { createPartnershipEntity } from '@/lib/actions'
-import { usePathname } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import { Typography } from './ui/typography'
 import { useState } from 'react'
+import { Checkbox } from './ui/checkbox'
 
 const defaultValues = {
   name: '',
@@ -23,7 +24,7 @@ const defaultValues = {
 }
 
 export const PartnershipForm = () => {
-  const t = useTranslations('partnership')
+  const t = useTranslations()
   const pathname = usePathname()
 
   const [isLoading, setLoading] = useState(false)
@@ -57,7 +58,7 @@ export const PartnershipForm = () => {
   if (isSubmitted) {
     return (
       <Typography className="text-white uppercase pb-2" variant="Sharp Grotesk Body 1">
-        {t('message.submitted')}
+        {t('partnership.message.submitted')}
       </Typography>
     )
   }
@@ -69,21 +70,28 @@ export const PartnershipForm = () => {
           name="name"
           control={control}
           render={({ field }) => {
-            return <Input {...field} placeholder={t('name.label')} error={!!errors.name} />
+            return <Input {...field} placeholder={t('partnership.name.label')} error={!!errors.name} />
           }}
         />
         <Controller
           name="companyName"
           control={control}
           render={({ field }) => {
-            return <Input {...field} placeholder={t('company_name.label')} error={!!errors.companyName} />
+            return <Input {...field} placeholder={t('partnership.company_name.label')} error={!!errors.companyName} />
           }}
         />
         <Controller
           name="email"
           control={control}
           render={({ field }) => {
-            return <Input {...field} type="email" placeholder={t('email_address.label')} error={!!errors.email} />
+            return (
+              <Input
+                {...field}
+                type="email"
+                placeholder={t('partnership.email_address.label')}
+                error={!!errors.email}
+              />
+            )
           }}
         />
         <Controller
@@ -91,7 +99,11 @@ export const PartnershipForm = () => {
           control={control}
           render={({ field }) => {
             return (
-              <Input {...field} placeholder={t('partnership_interests.label')} error={!!errors.partnershipInterests} />
+              <Input
+                {...field}
+                placeholder={t('partnership.partnership_interests.label')}
+                error={!!errors.partnershipInterests}
+              />
             )
           }}
         />
@@ -99,13 +111,43 @@ export const PartnershipForm = () => {
           name="message"
           control={control}
           render={({ field }) => {
-            return <Textarea {...field} placeholder={t('message.label')} error={!!errors.message} />
+            return <Textarea {...field} placeholder={t('partnership.message.label')} error={!!errors.message} />
           }}
+        />
+        <Controller
+          name="termsAndConditions"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              name={field.name}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+              onBlur={field.onBlur}
+              ref={field.ref}
+              error={!!errors.termsAndConditions}
+              label={
+                <>
+                  {t.rich('subscribe.terms_privacy.label', {
+                    terms: (chunks) => (
+                      <Link href="/terms" target="_blank">
+                        {chunks}
+                      </Link>
+                    ),
+                    privacy: (chunks) => (
+                      <Link href="/privacy" target="_blank">
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
+                </>
+              }
+            />
+          )}
         />
       </div>
 
       <Button loading={isLoading} className="w-full mt-2 md:w-auto" type="submit" variant="secondary">
-        {t('cta')}
+        {t('partnership.cta')}
       </Button>
     </form>
   )

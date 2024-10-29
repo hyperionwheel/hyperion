@@ -11,4 +11,5 @@ export const contactFormSchema = z.object({
   email: z.string().email('Invalid email address'),
   partnershipInterests: z.string().min(1, 'Partnership interests are required'),
   message: z.string().min(1, 'Message is required'),
+  termsAndConditions: z.literal(true, { errorMap: () => ({ message: 'You must accept the terms and conditions' }) }),
 })
