@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { useWindowScroll } from 'react-use'
 import { Button } from '@/components/ui/button'
@@ -9,9 +9,9 @@ import { cn } from '@/lib/utils'
 import { HyperionLogo } from '@/components/icons/hyperion-logo'
 import { ToggleButton } from '@/components/toggle-button'
 import { HeaderMenu } from '@/components/header-menu'
-import dynamic from 'next/dynamic'
 import { useLenis } from 'lenis/react'
 import { useHomeAnimationStore } from '@/hooks/useHomeAnimationStore'
+import { useClaimDialogStore } from '@/hooks/useClaimDialogStore'
 
 type HeaderProps = {
   variant: 'transparent' | 'white'
@@ -20,10 +20,6 @@ type HeaderProps = {
   mobileCTA?: boolean
   animation?: boolean
 }
-
-const ClaimRewardDialog = dynamic(() => import('./claim-reward-dialog').then((mod) => mod.ClaimRewardDialog), {
-  ssr: false,
-})
 
 export const Header = ({
   variant,
@@ -36,7 +32,7 @@ export const Header = ({
 
   const headerRef = useRef<HTMLHeadingElement>(null)
 
-  const [isDialogOpen, setDialogOpen] = useState(false)
+  const { open: openClaimDialog } = useClaimDialogStore()
 
   const lines = useLenis()
   const pathname = usePathname()
@@ -90,7 +86,7 @@ export const Header = ({
             })}
             onClick={() => {
               lines?.stop()
-              setDialogOpen(true)
+              openClaimDialog()
             }}
           >
             {t('cta')}
@@ -100,14 +96,6 @@ export const Header = ({
           <ToggleButton isOpen={isAsideVisible} toggleMenu={onAsideToggle} />
         </div>
       </div>
-
-      <ClaimRewardDialog
-        open={isDialogOpen}
-        onOpenChange={() => {
-          lines?.start()
-          setDialogOpen(false)
-        }}
-      />
     </header>
   )
 }
