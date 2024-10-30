@@ -5,6 +5,7 @@ import { locales } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import Providers from '@/components/providers'
 import { ReactLenis } from '@/lib/lines'
+import { GoogleAnalytics } from '@/components/google-analytics'
 
 type Props = {
   params: { locale: string }
@@ -58,6 +59,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID as string} />
       <ReactLenis root>
         <body className={cn('min-h-screen bg-[#FAFAFA]', sharpGrotesk.className)}>
           <Providers locale={locale} messages={messages}>

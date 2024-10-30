@@ -18,10 +18,17 @@ export const CookieConsent = () => {
     setCookieConsent(storedCookieConsent)
   }, [])
 
+  useEffect(() => {
+    window.gtag('consent', 'update', {
+      analytics_storage: cookieConsent ? 'granted' : 'denied',
+    })
+  }, [cookieConsent])
+
   const handleConsent = (consent: boolean) => {
     setCookieConsent(consent)
     setLocalStorage(COOKIE_CONSENT_KEY, consent)
   }
+
   return (
     <div
       className={cn('fixed bottom-0 left-0 right-0 w-full z-[9999]', {
