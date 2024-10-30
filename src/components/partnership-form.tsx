@@ -71,50 +71,39 @@ export const PartnershipForm = () => {
         <Controller
           name="name"
           control={control}
-          render={({ field }) => {
-            return <Input {...field} placeholder={t('partnership.name.label')} error={!!errors.name} />
-          }}
+          render={({ field }) => <Input {...field} placeholder={t('partnership.name.label')} error={!!errors.name} />}
         />
         <Controller
           name="companyName"
           control={control}
-          render={({ field }) => {
-            return <Input {...field} placeholder={t('partnership.company_name.label')} error={!!errors.companyName} />
-          }}
+          render={({ field }) => (
+            <Input {...field} placeholder={t('partnership.company_name.label')} error={!!errors.companyName} />
+          )}
         />
         <Controller
           name="email"
           control={control}
-          render={({ field }) => {
-            return (
-              <Input
-                {...field}
-                type="email"
-                placeholder={t('partnership.email_address.label')}
-                error={!!errors.email}
-              />
-            )
-          }}
+          render={({ field }) => (
+            <Input {...field} type="email" placeholder={t('partnership.email_address.label')} error={!!errors.email} />
+          )}
         />
         <Controller
           name="partnershipInterests"
           control={control}
-          render={({ field }) => {
-            return (
-              <Input
-                {...field}
-                placeholder={t('partnership.partnership_interests.label')}
-                error={!!errors.partnershipInterests}
-              />
-            )
-          }}
+          render={({ field }) => (
+            <Input
+              {...field}
+              placeholder={t('partnership.partnership_interests.label')}
+              error={!!errors.partnershipInterests}
+            />
+          )}
         />
         <Controller
           name="message"
           control={control}
-          render={({ field }) => {
-            return <Textarea {...field} placeholder={t('partnership.message.label')} error={!!errors.message} />
-          }}
+          render={({ field }) => (
+            <Textarea {...field} placeholder={t('partnership.message.label')} error={!!errors.message} />
+          )}
         />
         <Controller
           name="termsAndConditions"
@@ -147,7 +136,6 @@ export const PartnershipForm = () => {
           )}
         />
       </div>
-
       <Button loading={isLoading} className="w-full mt-2 md:w-auto" type="submit" variant="secondary">
         {t('partnership.cta')}
       </Button>
