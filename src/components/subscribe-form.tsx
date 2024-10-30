@@ -53,12 +53,12 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
   }
 
   const buttonClasses = [
+    'w-full',
     'text-white',
     'border-white',
-    'hover:bg-white',
     'hover:border-white',
     'hover:text-primary-main',
-    'w-full',
+    isLoading ? 'hover:bg-transparent' : 'hover:bg-white',
   ]
 
   if (isSubmitted) {
