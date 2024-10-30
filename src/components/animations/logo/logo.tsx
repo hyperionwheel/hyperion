@@ -5,8 +5,8 @@ export const AnimatedLogo = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <Animation
       data={animationData}
-      width={150}
-      height={150}
+      width={180}
+      height={180}
       loop={false}
       eventListeners={[
         {
