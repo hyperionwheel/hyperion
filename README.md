@@ -10,15 +10,13 @@ yarn install
 
 ## 2. Start in Development Mode
 
-Accessible at `http://localhost:3000`.
-
 ```bash
 yarn dev
 ```
 
-## 3. Build for Production
-
 Accessible at `http://localhost:3000`.
+
+## 3. Build for Production
 
 ```bash
 yarn build
