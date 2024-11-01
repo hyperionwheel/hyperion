@@ -122,3 +122,17 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
     pointer-events: none;
 }
+
+.subscribe-form-grid {
+    display: grid;
+    grid-template-areas:  'input button' 'checkbox checkbox';
+    grid-template-columns: min-content 1fr;
+    gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .subscribe-form-grid {
+        grid-template-areas: 'input' 'checkbox' 'button'; 
+        grid-template-columns: 1fr;
+    }
+}

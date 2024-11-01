@@ -20,6 +20,8 @@ export const images = {
   innovativeEngineering2: 'https://ucarecdn.com/53f39762-01ef-4d6e-b0cb-2b701247854f/',
   innovativeEngineering3: 'https://ucarecdn.com/9a0898a9-e9e6-484d-a9d8-099973908aea/',
   cyprusFrom143Meters: 'https://ucarecdn.com/60af8f62-e56e-4e88-a88e-9923448ffbb9/',
+  subscribeEmail: 'https://ucarecdn.com/3a9afd28-3f04-4ad2-a83d-47e10d0f7838/',
+  partnershipEmail: 'https://ucarecdn.com/69ac9b7d-900b-4b58-be1a-ffcbd89923a5/',
 }
 
 export const videos = {

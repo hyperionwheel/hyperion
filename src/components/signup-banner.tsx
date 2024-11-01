@@ -3,6 +3,7 @@ import { SubscribeForm } from './subscribe-form'
 
 export const SignupBanner = () => {
   const t = useTranslations('signup_banner')
+
   return (
     <section className="2xl:container mx-auto">
       <div className="py-5 px-1.25 md:py-8 md:px-5">

@@ -1,8 +1,10 @@
 'use client'
 
 import { useClaimDialogStore } from '@/hooks/useClaimDialogStore'
-import { ClaimRewardDialog } from './claim-reward-dialog'
 import { useLenis } from 'lenis/react'
+import dynamic from 'next/dynamic'
+
+const ClaimRewardDialog = dynamic(() => import('./claim-reward-dialog').then((mod) => mod.ClaimRewardDialog))
 
 export const DialogContainer = () => {
   const lines = useLenis()
