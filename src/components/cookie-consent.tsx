@@ -19,9 +19,11 @@ export const CookieConsent = () => {
   }, [])
 
   useEffect(() => {
-    window.gtag('consent', 'update', {
-      analytics_storage: cookieConsent ? 'granted' : 'denied',
-    })
+    if (typeof window !== 'undefined') {
+      window.gtag('consent', 'update', {
+        analytics_storage: cookieConsent ? 'granted' : 'denied',
+      })
+    }
   }, [cookieConsent])
 
   const handleConsent = (consent: boolean) => {
