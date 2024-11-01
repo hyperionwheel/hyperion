@@ -1,6 +1,9 @@
 'use server'
 
 import { googleSheet } from './google-sheet'
+import { sendEmail } from './sendgrid'
+import { SubscribeConfirmation } from '@/emails/subscribe-confirmation'
+import { PartnershipConfirmation } from '@/emails/partnership-confirmation'
 
 export async function createSubscribeEntity({ email, pathname }: { email: string; pathname: string }) {
   const date = new Date().toISOString()
@@ -8,7 +11,20 @@ export async function createSubscribeEntity({ email, pathname }: { email: string
   try {
     await googleSheet.loadInfo()
     const sheet = googleSheet.sheetsByIndex[0]
-    await sheet.addRow({ date, email, pathname })
+
+    const addSheetPromise = sheet.addRow({
+      date,
+      email,
+      pathname,
+    })
+
+    const sendEmailPromise = sendEmail({
+      to: email,
+      subject: 'Welcome to Hyperion!',
+      react: SubscribeConfirmation(),
+    })
+
+    await Promise.all([addSheetPromise, sendEmailPromise])
   } catch (e) {
     console.error(e)
 
@@ -38,7 +54,8 @@ export async function createPartnershipEntity({
   try {
     await googleSheet.loadInfo()
     const sheet = googleSheet.sheetsByIndex[1]
-    await sheet.addRow({
+
+    const addSheetPromise = sheet.addRow({
       date,
       email,
       pathname,
@@ -47,6 +64,14 @@ export async function createPartnershipEntity({
       partnership_interests: partnershipInterests,
       message,
     })
+
+    const sendEmailPromise = sendEmail({
+      to: email,
+      subject: 'Partnering with Hyperion',
+      react: PartnershipConfirmation({ name }),
+    })
+
+    await Promise.all([addSheetPromise, sendEmailPromise])
   } catch (e) {
     console.error(e)
 

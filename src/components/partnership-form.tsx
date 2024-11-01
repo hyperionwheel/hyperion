@@ -1,8 +1,5 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-
 import { contactFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
@@ -14,6 +11,7 @@ import { Link, usePathname } from '@/i18n/routing'
 import { Typography } from './ui/typography'
 import { useState } from 'react'
 import { Checkbox } from './ui/checkbox'
+import { TextField } from './ui/text-field'
 
 const defaultValues = {
   name: '',
@@ -67,33 +65,54 @@ export const PartnershipForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submitHandler)} noValidate>
-      <div className="flex flex-col gap-1.25">
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => <Input {...field} placeholder={t('partnership.name.label')} error={!!errors.name} />}
-        />
-        <Controller
-          name="companyName"
-          control={control}
-          render={({ field }) => (
-            <Input {...field} placeholder={t('partnership.company_name.label')} error={!!errors.companyName} />
-          )}
-        />
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col w-full gap-2 md:flex-row">
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label={t('partnership.name.label')}
+                placeholder={t('partnership.name.placeholder')}
+                error={!!errors.name}
+              />
+            )}
+          />
+          <Controller
+            name="companyName"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label={t('partnership.company_name.label')}
+                placeholder={t('partnership.company_name.placeholder')}
+                error={!!errors.companyName}
+              />
+            )}
+          />
+        </div>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
-            <Input {...field} type="email" placeholder={t('partnership.email_address.label')} error={!!errors.email} />
+            <TextField
+              {...field}
+              type="email"
+              label={t('partnership.email_address.label')}
+              placeholder={t('partnership.email_address.placeholder')}
+              error={!!errors.email}
+            />
           )}
         />
         <Controller
           name="partnershipInterests"
           control={control}
           render={({ field }) => (
-            <Input
+            <TextField
               {...field}
-              placeholder={t('partnership.partnership_interests.label')}
+              label={t('partnership.partnership_interests.label')}
+              placeholder={t('partnership.partnership_interests.placeholder')}
               error={!!errors.partnershipInterests}
             />
           )}
@@ -102,7 +121,13 @@ export const PartnershipForm = () => {
           name="message"
           control={control}
           render={({ field }) => (
-            <Textarea {...field} placeholder={t('partnership.message.label')} error={!!errors.message} />
+            <TextField
+              {...field}
+              label={t('partnership.message.label')}
+              placeholder={t('partnership.message.placeholder')}
+              error={!!errors.message}
+              multiline
+            />
           )}
         />
         <Controller

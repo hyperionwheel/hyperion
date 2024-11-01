@@ -14,18 +14,21 @@ import { cn } from '@/lib/utils'
 import { createSubscribeEntity } from '@/lib/actions'
 import { Typography } from './ui/typography'
 import { useState } from 'react'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const defaultValues = {
   email: '',
   termsAndConditions: undefined,
 }
 
-export const SubscribeForm = ({ className }: { className?: string }) => {
+export const SubscribeForm = ({ className, inModal }: { className?: string; inModal?: boolean }) => {
   const t = useTranslations()
   const pathname = usePathname()
 
   const [isLoading, setLoading] = useState(false)
   const [isSubmitted, setSubmitted] = useState(false)
+
+  const isMobile = useIsMobile()
 
   const {
     reset,
@@ -52,18 +55,9 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
     setSubmitted(true)
   }
 
-  const buttonClasses = [
-    'w-full',
-    'text-white',
-    'border-white',
-    'hover:border-white',
-    'hover:text-primary-main',
-    isLoading ? 'hover:bg-transparent' : 'hover:bg-white',
-  ]
-
   if (isSubmitted) {
     return (
-      <Typography className={cn('text-white uppercase py-2')} variant="Sharp Grotesk Body 1">
+      <Typography className={cn('text-white uppercase py-2', { 'text-black': inModal })} variant="Sharp Grotesk Body 1">
         {t('subscribe.message.submitted')}
       </Typography>
     )
@@ -71,32 +65,23 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
 
   return (
     <form className={cn('mt-2.5', className)} onSubmit={handleSubmit(submitHandler)} noValidate>
-      <div className="flex flex-col gap-2.5 md:flex-row">
-        <div className="flex flex-col gap-2.5">
-          <div className="flex gap-2.5">
-            <Controller
-              name="email"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  type="email"
-                  className="md:w-[400px]"
-                  error={!!errors.email}
-                  placeholder={t('subscribe.email.label')}
-                />
-              )}
-            />
-            <Button
-              loading={isLoading}
-              type="submit"
-              className={cn('hidden md:w-[56px] md:flex', buttonClasses)}
-              variant="outlined"
-              size="icon"
-            >
-              <SendIcon />
-            </Button>
-          </div>
+      <div className="subscribe-form-grid">
+        <div className="[grid-area:input]">
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                type="email"
+                className="md:w-[400px]"
+                error={!!errors.email}
+                placeholder={t('subscribe.email.label')}
+              />
+            )}
+          />
+        </div>
+        <div className="[grid-area:checkbox]">
           <Controller
             name="termsAndConditions"
             control={control}
@@ -109,7 +94,11 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
                 ref={field.ref}
                 error={!!errors.termsAndConditions}
                 label={
-                  <>
+                  <span
+                    className={cn({
+                      'text-black': inModal,
+                    })}
+                  >
                     {t.rich('subscribe.terms_privacy.label', {
                       terms: (chunks) => (
                         <Link href="/terms" target="_blank">
@@ -122,16 +111,20 @@ export const SubscribeForm = ({ className }: { className?: string }) => {
                         </Link>
                       ),
                     })}
-                  </>
+                  </span>
                 }
               />
             )}
           />
+        </div>
+        <div className="[grid-area:button]">
           <Button
-            type="submit"
+            suppressHydrationWarning
             loading={isLoading}
-            className={cn('flex md:hidden', buttonClasses)}
+            type="submit"
+            fullWidth={isMobile}
             variant="outlined"
+            className={isLoading ? 'bg-primary-light' : ''}
             size="icon"
           >
             <SendIcon />

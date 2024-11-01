@@ -16,7 +16,7 @@ const buttonVariants = cva(
       size: {
         sm: 'border-[1px] font-normal text-sm leading-[21px] px-2 h-3.75',
         md: 'border-[2px] font-medium text-base leading-[19px] px-3 h-6',
-        icon: 'border-[2px] h-[56px] w-[56px]',
+        icon: 'border-[1px] h-[56px] w-[56px] bg-white text-primary-main',
       },
     },
     defaultVariants: {
@@ -31,14 +31,20 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
   loading?: boolean
+  fullWidth?: boolean
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, type = 'button', loading, asChild = false, children, ...props }, ref) => {
+  ({ className, variant, size, type = 'button', loading, fullWidth, asChild = false, children, ...props }, ref) => {
     const Component = asChild ? Slot : 'button'
 
     return (
-      <Component ref={ref} type={type} className={cn(buttonVariants({ variant, size, className }))} {...props}>
+      <Component
+        ref={ref}
+        type={type}
+        className={cn(buttonVariants({ variant, size, className }), { 'w-full': fullWidth })}
+        {...props}
+      >
         {loading ? <Spinner /> : children}
       </Component>
     )
