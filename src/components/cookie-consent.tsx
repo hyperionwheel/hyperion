@@ -19,7 +19,7 @@ export const CookieConsent = () => {
   }, [])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
         analytics_storage: cookieConsent ? 'granted' : 'denied',
       })
